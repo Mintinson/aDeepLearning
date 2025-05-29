@@ -1,0 +1,134 @@
+[
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\utils_test.dir\\utils_test\\test_utils.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\utils_test\\test_utils.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\utils_test\\test_utils.cpp",
+  "output": "Tests\\CMakeFiles\\utils_test.dir\\utils_test\\test_utils.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\array_test.dir\\datatype_test\\test_arr.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_arr.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_arr.cpp",
+  "output": "Tests\\CMakeFiles\\array_test.dir\\datatype_test\\test_arr.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\matrix_test.dir\\datatype_test\\test_matrix.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_matrix.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_matrix.cpp",
+  "output": "Tests\\CMakeFiles\\matrix_test.dir\\datatype_test\\test_matrix.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\dup_batch_test.dir\\datatype_test\\test_batch_duplicate.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_batch_duplicate.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_batch_duplicate.cpp",
+  "output": "Tests\\CMakeFiles\\dup_batch_test.dir\\datatype_test\\test_batch_duplicate.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\other_data_test.dir\\datatype_test\\test_others.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_others.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\datatype_test\\test_others.cpp",
+  "output": "Tests\\CMakeFiles\\other_data_test.dir\\datatype_test\\test_others.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\abs_test.dir\\unary_operators_test\\test_abs.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_abs.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_abs.cpp",
+  "output": "Tests\\CMakeFiles\\abs_test.dir\\unary_operators_test\\test_abs.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\transpose_test.dir\\unary_operators_test\\test_transpose.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_transpose.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_transpose.cpp",
+  "output": "Tests\\CMakeFiles\\transpose_test.dir\\unary_operators_test\\test_transpose.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\tanh_test.dir\\unary_operators_test\\test_tanh.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_tanh.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_tanh.cpp",
+  "output": "Tests\\CMakeFiles\\tanh_test.dir\\unary_operators_test\\test_tanh.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\sign_test.dir\\unary_operators_test\\test_sign.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_sign.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_sign.cpp",
+  "output": "Tests\\CMakeFiles\\sign_test.dir\\unary_operators_test\\test_sign.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\softmax_test.dir\\unary_operators_test\\test_softmax.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_softmax.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_softmax.cpp",
+  "output": "Tests\\CMakeFiles\\softmax_test.dir\\unary_operators_test\\test_softmax.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\sigmoid_test.dir\\unary_operators_test\\test_sigmoid.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_sigmoid.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_sigmoid.cpp",
+  "output": "Tests\\CMakeFiles\\sigmoid_test.dir\\unary_operators_test\\test_sigmoid.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\collapse_test.dir\\unary_operators_test\\test_collapse.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_collapse.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\unary_operators_test\\test_collapse.cpp",
+  "output": "Tests\\CMakeFiles\\collapse_test.dir\\unary_operators_test\\test_collapse.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\dot_test.dir\\binary_operators_test\\test_dot.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_dot.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_dot.cpp",
+  "output": "Tests\\CMakeFiles\\dot_test.dir\\binary_operators_test\\test_dot.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\add_test.dir\\binary_operators_test\\test_add.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_add.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_add.cpp",
+  "output": "Tests\\CMakeFiles\\add_test.dir\\binary_operators_test\\test_add.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\divide_test.dir\\binary_operators_test\\test_divide.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_divide.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_divide.cpp",
+  "output": "Tests\\CMakeFiles\\divide_test.dir\\binary_operators_test\\test_divide.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\mul_test.dir\\binary_operators_test\\test_mul.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_mul.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_mul.cpp",
+  "output": "Tests\\CMakeFiles\\mul_test.dir\\binary_operators_test\\test_mul.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\sigmoid_derivative.dir\\binary_operators_test\\test_sigmoid_derivative.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_sigmoid_derivative.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_sigmoid_derivative.cpp",
+  "output": "Tests\\CMakeFiles\\sigmoid_derivative.dir\\binary_operators_test\\test_sigmoid_derivative.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\softmax_derivative.dir\\binary_operators_test\\test_softmax_derivative.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_softmax_derivative.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_softmax_derivative.cpp",
+  "output": "Tests\\CMakeFiles\\softmax_derivative.dir\\binary_operators_test\\test_softmax_derivative.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\subtration_test.dir\\binary_operators_test\\test_subtraction.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_subtraction.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_subtraction.cpp",
+  "output": "Tests\\CMakeFiles\\subtration_test.dir\\binary_operators_test\\test_subtraction.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\tanh_derivative_test.dir\\binary_operators_test\\test_tanh_derivative.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_tanh_derivative.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\binary_operators_test\\test_tanh_derivative.cpp",
+  "output": "Tests\\CMakeFiles\\tanh_derivative_test.dir\\binary_operators_test\\test_tanh_derivative.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\activate_layer_test.dir\\elementary_layer\\test_activate.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\elementary_layer\\test_activate.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\elementary_layer\\test_activate.cpp",
+  "output": "Tests\\CMakeFiles\\activate_layer_test.dir\\elementary_layer\\test_activate.cpp.obj"
+},
+{
+  "directory": "D:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug",
+  "command": "C:\\Users\\asus\\gcc\\bin\\g++.exe -ID:/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/mingw-debug/include -g -std=c++20 -o Tests\\CMakeFiles\\weight_layer_test.dir\\elementary_layer\\test_weight_layer.cpp.obj -c D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\elementary_layer\\test_weight_layer.cpp",
+  "file": "D:\\learningSomething\\casualCode\\casualCpp\\cppMeta\\aDeepLearning\\Tests\\elementary_layer\\test_weight_layer.cpp",
+  "output": "Tests\\CMakeFiles\\weight_layer_test.dir\\elementary_layer\\test_weight_layer.cpp.obj"
+}
+]
