@@ -88,3 +88,13 @@ target_link_libraries(operator_layer_test PRIVATE metann)
 
 add_executable(bias_layer_test "elementary_layer/test_bias.cpp")
 target_link_libraries(bias_layer_test PRIVATE metann)
+
+# Composed Layer
+add_executable(compose_kernel_test "composed_layer/test_compose_kernel.cpp")
+target_link_libraries(compose_kernel_test PRIVATE metann)
+
+add_executable(linear_layer_test "composed_layer/test_linear_layer.cpp")
+target_link_libraries(linear_layer_test PRIVATE metann)
+
+add_executable(single_layer_test "composed_layer/test_single_layer.cpp")
+target_link_libraries(single_layer_test PRIVATE metann)

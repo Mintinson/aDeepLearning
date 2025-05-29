@@ -2,14 +2,13 @@
 // Created by asus on 2025/2/18.
 //
 #include <iostream>
-
-#include "../layers/compose/single_layer.hpp"
-#include "../policy/policy.hpp"
 #include <map>
 #include <string>
 
-#include "../layers/grad_collector.hpp"
-#include "../layers/initializer.hpp"
+#include <metann/layers/compose/single_layer.hpp>
+#include <metann/policy/policy.hpp>
+#include <metann/layers/grad_collector.hpp>
+#include <metann/layers/initializer.hpp>
 
 using std::cout;
 using std::endl;
@@ -150,9 +149,9 @@ void test_single_layer3()
     auto input = LayerIO::create().set<LayerIO>(i);
     auto out = evaluate(layer.feedForward(input).get<LayerIO>());
 
-    assert(fabs(out(0, 0) - (1 / (1+exp(-0.05)))) < 0.00001);
-    assert(fabs(out(0, 1) - (1 / (1+exp(-0.11)))) < 0.00001);
-    assert(fabs(out(0, 2) - (1 / (1+exp(-0.17)))) < 0.00001);
+    assert(fabs(out(0, 0) - (1 / (1 + exp(-0.05)))) < 0.00001);
+    assert(fabs(out(0, 1) - (1 / (1 + exp(-0.11)))) < 0.00001);
+    assert(fabs(out(0, 2) - (1 / (1 + exp(-0.17)))) < 0.00001);
 
     auto out_grad = layer.feedBackward(LayerIO::create());
     auto fbOut = out_grad.get<LayerIO>();
@@ -201,9 +200,9 @@ void test_single_layer4()
     auto input = LayerIO::create().set<LayerIO>(i);
     auto out = evaluate(layer.feedForward(input).get<LayerIO>());
 
-    assert(fabs(out(0, 0) - (1 / (1+exp(-0.75)))) < 0.00001);
-    assert(fabs(out(0, 1) - (1 / (1+exp(-0.91)))) < 0.00001);
-    assert(fabs(out(0, 2) - (1 / (1+exp(-1.07)))) < 0.00001);
+    assert(fabs(out(0, 0) - (1 / (1 + exp(-0.75)))) < 0.00001);
+    assert(fabs(out(0, 1) - (1 / (1 + exp(-0.91)))) < 0.00001);
+    assert(fabs(out(0, 2) - (1 / (1 + exp(-1.07)))) < 0.00001);
 
     Matrix<float, CPU> grad(1, 3);
     grad.setValue(0, 0, 0.19);
@@ -261,9 +260,10 @@ void test_single_layer4()
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Testing Single Layer..." << std::endl;
     test_single_layer1();
     test_single_layer2();
     test_single_layer3();
     test_single_layer4();
+    std::cout << "All tests passed!" << std::endl;
 }
