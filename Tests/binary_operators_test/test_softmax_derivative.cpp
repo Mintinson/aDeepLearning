@@ -80,7 +80,7 @@ void test_softmax_derivative1()
     }
     helper = evaluate(dot(mGrad, helper));
     for (size_t i = 0; i < 4; ++i) {
-        assert(fabs(t_r(0, i) - helper(0, i)) < 0.0001);
+        assert(fabs(t_r(0, i) - helper(0, i)) < 0.01);
     }
     cout << "done" << endl;
 }

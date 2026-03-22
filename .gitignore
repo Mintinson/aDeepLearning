@@ -363,7 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Rider IDE files
-.idea
+.idea/
 
 # VS code configuration files
-.vscode
+.vscode/

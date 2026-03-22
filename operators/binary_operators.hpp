@@ -1062,7 +1062,7 @@ namespace metann
     template <>
     struct OperSeq<BinaryOperTags::VecSoftmaxDerivative>
     {
-        using type = OperSeqContainer<eval::BinaryCalculator<BinaryOperTags::SigmoidDerivative>>;
+        using type = OperSeqContainer<eval::BinaryCalculator<BinaryOperTags::VecSoftmaxDerivative>>;
     };
 
 

@@ -75,6 +75,8 @@ install(EXPORT metannTargets
     NAMESPACE metann::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/metann
 )
+
+include(CTest)
 add_subdirectory(Tests)
 
 # include_directories(utils)
