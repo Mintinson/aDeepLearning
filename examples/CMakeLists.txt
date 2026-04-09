@@ -1,0 +1,10 @@
+function(add_metann_example TARGET_NAME SOURCE_FILE)
+    add_executable(${TARGET_NAME} ${SOURCE_FILE})
+    target_link_libraries(${TARGET_NAME} PRIVATE metann)
+endfunction()
+
+add_metann_example(ml_linear_regression "ml_linear_regression.cpp")
+add_metann_example(ml_logistic_regression "ml_logistic_regression.cpp")
+add_metann_example(nn_two_layer_inference "nn_two_layer_inference.cpp")
+add_metann_example(nn_single_layer_backward "nn_single_layer_backward.cpp")
+add_metann_example(nn_xor_training "nn_xor_training.cpp")

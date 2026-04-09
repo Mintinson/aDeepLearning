@@ -20,12 +20,12 @@ add_library(metann INTERFACE)
 
 # Get all .hpp files from specified directories
 file(GLOB_RECURSE META_HEADERS
-    "${CMAKE_CURRENT_SOURCE_DIR}/data/*.hpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/layers/*.hpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/operators/*.hpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/policy/*.hpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/utils/*.hpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/eval/*.hpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/metann/*.hpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/layers/*.hpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/operators/*.hpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/policy/*.hpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/utils/*.hpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/eval/*.hpp"
 )
 
 # Create the include directory structure
@@ -78,6 +78,7 @@ install(EXPORT metannTargets
 
 include(CTest)
 add_subdirectory(Tests)
+add_subdirectory(examples)
 
 # include_directories(utils)
 # include_directories(policy)
