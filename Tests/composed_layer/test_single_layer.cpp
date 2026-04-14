@@ -6,16 +6,15 @@
 #include <string>
 
 #include <metann/layers/compose/single_layer.hpp>
-#include <metann/policy/policy.hpp>
 #include <metann/layers/grad_collector.hpp>
 #include <metann/layers/initializer.hpp>
+#include <metann/policy/policy.hpp>
 
 using std::cout;
 using std::endl;
 using namespace metann;
 
-void test_single_layer1()
-{
+void test_single_layer1() {
     // No update, action is sigmoid, with bias
     cout << "Test single layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<SingleLayer>;
@@ -67,8 +66,7 @@ void test_single_layer1()
     cout << "done" << endl;
 }
 
-void test_single_layer2()
-{
+void test_single_layer2() {
     // No update, action is tanh, with bias
     cout << "Test single layer case 2 ...\t";
     using RootLayer = InjectPolicy_t<SingleLayer, TanhAction>;
@@ -119,8 +117,7 @@ void test_single_layer2()
     cout << "done" << endl;
 }
 
-void test_single_layer3()
-{
+void test_single_layer3() {
     // No update, action is sigmoid, no bias
     cout << "Test single layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<SingleLayer, NoBiasSingleLayer>;
@@ -164,8 +161,7 @@ void test_single_layer3()
     cout << "done" << endl;
 }
 
-void test_single_layer4()
-{
+void test_single_layer4() {
     // Update, action is sigmoid, with bias
     cout << "Test single layer case 4 ...\t";
     using RootLayer = InjectPolicy_t<SingleLayer, UpdatePolicy>;
@@ -221,12 +217,10 @@ void test_single_layer4()
     bool weight_update_valid = false;
     bool bias_update_valid = false;
 
-    for (auto& p : grad_collector)
-    {
+    for (auto& p : grad_collector) {
         auto w = p.m_weight;
         auto info = evaluate(collapse(p.m_grad));
-        if (w.rowNum() == w1.rowNum())
-        {
+        if (w.rowNum() == w1.rowNum()) {
             weight_update_valid = true;
             assert(fabs(info(0, 0) - 0.0414 * 0.1) < 0.00001);
             assert(fabs(info(1, 0) - 0.0414 * 0.2) < 0.00001);
@@ -234,16 +228,12 @@ void test_single_layer4()
             assert(fabs(info(1, 1) - 0.04706511 * 0.2) < 0.00001);
             assert(fabs(info(0, 2) + 0.02852585 * 0.1) < 0.00001);
             assert(fabs(info(1, 2) + 0.02852585 * 0.2) < 0.00001);
-        }
-        else if (w.rowNum() == b1.rowNum())
-        {
+        } else if (w.rowNum() == b1.rowNum()) {
             bias_update_valid = true;
             assert(fabs(info(0, 0) - 0.0414) < 0.00001);
             assert(fabs(info(0, 1) - 0.04706511) < 0.00001);
             assert(fabs(info(0, 2) + 0.02852585) < 0.00001);
-        }
-        else
-        {
+        } else {
             assert(false);
         }
     }
@@ -258,8 +248,7 @@ void test_single_layer4()
     cout << "done" << endl;
 }
 
-int main()
-{
+int main() {
     std::cout << "Testing Single Layer..." << std::endl;
     test_single_layer1();
     test_single_layer2();

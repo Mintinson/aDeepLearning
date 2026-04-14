@@ -5,69 +5,61 @@
 #ifndef SCALAR_HPP
 #define SCALAR_HPP
 
+#include "../eval/facilities.hpp"
 #include "data_category.hpp"
 #include "data_device.hpp"
-#include "../eval/facilities.hpp"
 
-namespace metann
+namespace metann {
+template <typename Element, DeviceConcept Device = CPU>
+struct Scalar;
+
+template <typename Element, DeviceConcept Device>
+constexpr bool IsScalarHelper_v<Scalar<Element, Device>> = true;
+
+template <typename Element, DeviceConcept Device>
+struct PrincipleDataType<CategoryTags::Scalar, Element, Device> {
+    using type = Scalar<Element, Device>;
+};
+
+template <typename Element>
+struct Scalar<Element, CPU>  // specialization for CPU scalar
 {
-    template <typename Element, DeviceConcept Device = CPU>
-    struct Scalar;
+public:
+    using ElementType = Element;
+    using DeviceType = CPU;
 
-    template <typename Element, DeviceConcept Device>
-    constexpr bool IsScalarHelper_v<Scalar<Element, Device>> = true;
+    explicit Scalar(ElementType element) : m_elem(element) {}
 
-    template<typename Element, DeviceConcept Device>
-    struct PrincipleDataType<CategoryTags::Scalar, Element, Device>
-    {
-        using type = Scalar<Element, Device>;
-    };
+    // rule of six
+    Scalar() = default;
+    Scalar(const Scalar&) = default;
+    Scalar(Scalar&&) noexcept = default;
+    Scalar& operator=(const Scalar&) = default;
+    Scalar& operator=(Scalar&&) noexcept = default;
+    ~Scalar() = default;
 
+public:
+    ElementType& value() { return m_elem; }
 
-    template <typename Element>
-    struct Scalar<Element, CPU>  // specialization for CPU scalar
-    {
-    public:
-        using ElementType = Element;
-        using DeviceType = CPU;
+    const ElementType& value() const { return m_elem; }
 
-        explicit Scalar(ElementType element) : m_elem(element)
-        {
-        }
-        // rule of six
-        Scalar() = default;
-        Scalar(const Scalar&) = default;
-        Scalar(Scalar&&) noexcept = default;
-        Scalar& operator=(const Scalar&) = default;
-        Scalar& operator=(Scalar&&) noexcept = default;
-        ~Scalar() = default;
-    public:
-        ElementType& value() {return m_elem;}
-        const ElementType& value() const {return m_elem;}
+    bool operator==(const Scalar& rhs) const { return m_elem == rhs.m_elem; }
 
-        bool operator==(const Scalar& rhs) const
-        {
-            return m_elem == rhs.m_elem;
-        }
-        template<typename OtherType>
-        bool operator==(const OtherType& rhs) const
-        {
-            return false;
-        }
-        template<typename OtherType>
-        bool operator!=(const OtherType& rhs) const
-        {
-            return !(this->operator==(rhs));
-        }
+    template <typename OtherType>
+    bool operator==(const OtherType& rhs) const {
+        return false;
+    }
 
-        auto evalRegister() const
-        {
-            return make_const_eval_handle(*this);
-        }
-    private:
-        ElementType m_elem{};
-    };
-} // namespace metann
+    template <typename OtherType>
+    bool operator!=(const OtherType& rhs) const {
+        return !(this->operator==(rhs));
+    }
 
+    auto evalRegister() const { return make_const_eval_handle(*this); }
 
-#endif //SCALAR_HPP
+private:
+    ElementType m_elem{};
+};
+}  // namespace metann
+
+#endif  // SCALAR_HPP

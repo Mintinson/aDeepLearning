@@ -6,6 +6,10 @@
 #include <cmath>
 #include <iostream>
 #include <map>
+#include <string>
+#include <type_traits>
+#include <vector>
+
 #include <metann/data/batch.hpp>
 #include <metann/data/data_category.hpp>
 #include <metann/data/data_device.hpp>
@@ -23,23 +27,17 @@
 #include <metann/operators/unary_operators.hpp>
 #include <metann/policy/policy.hpp>
 #include <metann/utils/vartype_dict.hpp>
-#include <string>
-#include <type_traits>
-#include <vector>
 
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
-        for (std::size_t j = 0; j < c; ++j)
-        {
+    for (std::size_t i = 0; i < r; ++i) {
+        for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
         }
@@ -48,16 +46,12 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
 }
 
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
-    for (size_t i = 0; i < r; ++i)
-    {
-        for (size_t j = 0; j < c; ++j)
-        {
-            for (size_t k = 0; k < d; ++k)
-            {
+    for (size_t i = 0; i < r; ++i) {
+        for (size_t j = 0; j < c; ++j) {
+            for (size_t k = 0; k < d; ++k) {
                 res.setValue(k, i, j, static_cast<TElem>(start * scale));
                 start += 1.0f;
             }
@@ -66,8 +60,7 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     return res;
 }
 
-void test_weight_layer1()
-{
+void test_weight_layer1() {
     cout << "Test weight layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer>;
     static_assert(!RootLayer::isFeedbackOutput, "Test Error");
@@ -106,8 +99,8 @@ void test_weight_layer1()
     layer_neutral_invariant(layer);
     cout << "done" << endl;
 }
-void test_weight_layer2()
-{
+
+void test_weight_layer2() {
     cout << "Test weight layer case 2 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer, UpdatePolicy>;
     static_assert(!RootLayer::isFeedbackOutput, "Test Error");
@@ -162,8 +155,8 @@ void test_weight_layer2()
 
     cout << "done" << endl;
 }
-void test_weight_layer3()
-{
+
+void test_weight_layer3() {
     cout << "Test weight layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -172,8 +165,10 @@ void test_weight_layer3()
     RootLayer layer("root", 2, 2);
 
     Matrix<float, CPU> w(2, 2);
-    w.setValue(0, 0, 1.1f); w.setValue(0, 1, 3.1f);
-    w.setValue(1, 0, 0.1f); w.setValue(1, 1, 1.17f);
+    w.setValue(0, 0, 1.1f);
+    w.setValue(0, 1, 3.1f);
+    w.setValue(1, 0, 0.1f);
+    w.setValue(1, 1, 1.17f);
 
     auto initializer = make_initializer<float>();
     initializer.setMatrix("root", w);
@@ -224,8 +219,8 @@ void test_weight_layer3()
     layer_neutral_invariant(layer);
     cout << "done" << endl;
 }
-void test_weight_layer4()
-{
+
+void test_weight_layer4() {
     cout << "Test weight layer case 4 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -243,8 +238,7 @@ void test_weight_layer4()
     std::vector<Matrix<float, CPU>> op_in;
     std::vector<Matrix<float, CPU>> op_grad;
 
-    for (int loop_count = 0; loop_count < 10; ++loop_count)
-    {
+    for (int loop_count = 0; loop_count < 10; ++loop_count) {
         auto input = gen_matrix<float>(1, 8, loop_count * 0.1f, -0.3f);
         op_in.push_back(input);
 
@@ -260,14 +254,12 @@ void test_weight_layer4()
         assert(res.colNum() == 4);
         auto c = handle2.data();
 
-        for (size_t i = 0; i < 4; ++i)
-        {
+        for (size_t i = 0; i < 4; ++i) {
             assert(fabs(res(0, i) - c(0, i)) <= 0.0001f);
         }
     }
 
-    for (int loop_count = 9; loop_count >= 0; --loop_count)
-    {
+    for (int loop_count = 9; loop_count >= 0; --loop_count) {
         auto grad = gen_matrix<float>(1, 4, loop_count * 0.2f, -0.1f);
         op_grad.push_back(grad);
         auto out_grad = layer.feedBackward(LayerIO::create().set<LayerIO>(grad));
@@ -282,8 +274,7 @@ void test_weight_layer4()
         assert(fbOut.rowNum() == 1);
         assert(fbOut.colNum() == 8);
 
-        for (size_t i = 0; i < 8; ++i)
-        {
+        for (size_t i = 0; i < 8; ++i) {
             assert(fabs(fbOut(0, i) - aimFbout(0, i)) < 0.0001);
         }
     }
@@ -295,17 +286,14 @@ void test_weight_layer4()
 
     auto w1 = grad_collector.begin()->m_weight;
     auto aim = evaluate(dot(transpose(op_in[0]), op_grad[0]));
-    for (int loop_count = 1; loop_count < 10; ++loop_count)
-    {
+    for (int loop_count = 1; loop_count < 10; ++loop_count) {
         aim = evaluate(aim + dot(transpose(op_in[loop_count]), op_grad[loop_count]));
     }
 
     auto info_g = evaluate(collapse(grad_collector.begin()->m_grad));
 
-    for (size_t i = 0; i < 8; ++i)
-    {
-        for (size_t j = 0; j < 4; ++j)
-        {
+    for (size_t i = 0; i < 8; ++i) {
+        for (size_t j = 0; j < 4; ++j) {
             assert(fabs(aim(i, j) - info_g(i, j)) < 0.0001f);
         }
     }
@@ -318,14 +306,13 @@ void test_weight_layer4()
     cout << "done" << endl;
 }
 
-void test_weight_layer5()
-{
+void test_weight_layer5() {
     cout << "Test weight layer case 5 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer, UpdatePolicy, FeedbackOutputPolicy>;
     RootLayer layer("root", 80, 40);
 
-    auto initializer = make_initializer<float, InitializerIs<struct UniformTag>>()
-        .setFiller<UniformTag>(UniformFiller{ -1, 1 });
+    auto initializer =
+        make_initializer<float, InitializerIs<struct UniformTag>>().setFiller<UniformTag>(UniformFiller{-1, 1});
     std::map<std::string, Matrix<float, CPU>> loader;
     layer_init(layer, initializer, loader);
 
@@ -334,20 +321,16 @@ void test_weight_layer5()
     const auto& val = loader.begin()->second;
 
     float mean = 0;
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             mean += val(i, j);
         }
     }
     mean /= val.rowNum() * val.colNum();
 
     float var = 0;
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             var += (val(i, j) - mean) * (val(i, j) - mean);
         }
     }
@@ -358,14 +341,14 @@ void test_weight_layer5()
 
     cout << "done" << endl;
 }
-void test_weight_layer6()
-{
+
+void test_weight_layer6() {
     cout << "Test weight layer case 6 ...\t";
     using RootLayer = InjectPolicy_t<WeightLayer, UpdatePolicy, FeedbackOutputPolicy>;
     RootLayer layer("root", 400, 200);
 
-    auto initializer = make_initializer<float, WeightInitializerIs<struct UniformTag>>()
-        .setFiller<UniformTag>(UniformFiller{ -1.5, 1.5 });
+    auto initializer = make_initializer<float, WeightInitializerIs<struct UniformTag>>().setFiller<UniformTag>(
+        UniformFiller{-1.5, 1.5});
     std::map<std::string, Matrix<float, CPU>> loader;
     layer.init(initializer, loader);
 
@@ -374,20 +357,16 @@ void test_weight_layer6()
     auto& val = loader.begin()->second;
 
     float mean = 0;
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             mean += val(i, j);
         }
     }
     mean /= val.rowNum() * val.colNum();
 
     float var = 0;
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             var += (val(i, j) - mean) * (val(i, j) - mean);
         }
     }
@@ -398,9 +377,8 @@ void test_weight_layer6()
     cout << "done" << endl;
 }
 
-int main()
-{
-    std::cout << "Test weight layer ...\n"; 
+int main() {
+    std::cout << "Test weight layer ...\n";
     test_weight_layer1();
     test_weight_layer2();
     test_weight_layer3();

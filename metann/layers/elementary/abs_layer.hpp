@@ -18,8 +18,8 @@ class AbsLayer {
     using CurLayerPolicies = PlainPolicy_t<PoliciesContainer, PolicyContainer<>>;
 
 public:
-    static constexpr bool isFeedbackOutput = details::PolicySelect_t<
-        FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
+    static constexpr bool isFeedbackOutput =
+        details::PolicySelect_t<FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
     static constexpr bool isUpdate = false;
     using InputType = LayerIO;
     using OutputType = LayerIO;
@@ -32,8 +32,7 @@ private:
 
 public:
     template <typename InType>
-    auto feedForward(const InType& input)
-    {
+    auto feedForward(const InType& input) {
         // const auto& val1 = input.template get<AddLayerIn1>();
         // const auto& val2 = input.template get<AddLayerIn2>();
         // using RawType1 = std::decay_t<decltype(val1)>;
@@ -54,12 +53,11 @@ public:
     }
 
     template <typename InGrad>
-    auto feedBackward(const InGrad& grad)
-    {
+    auto feedBackward(const InGrad& grad) {
         return FeedbackOut::feedback(m_data, grad);
     }
-    void neutralInvariant() const
-    {
+
+    void neutralInvariant() const {
         if constexpr (isFeedbackOutput) {
             if (!m_data.empty()) {
                 throw std::runtime_error("NeutralInvariant Fail!");
@@ -71,6 +69,6 @@ private:
     using InternalType = typename FeedbackOut::template InternalType<ElementType, DeviceType>;
     InternalType m_data;
 };
-} // namespace metann
+}  // namespace metann
 
-#endif // ABS_LAYER_HPP
+#endif  // ABS_LAYER_HPP

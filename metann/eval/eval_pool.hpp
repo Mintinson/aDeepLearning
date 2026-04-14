@@ -5,10 +5,5 @@
 #ifndef EVAL_POOL_HPP
 #define EVAL_POOL_HPP
 
-namespace metann
-{
-
-
-
-}
-#endif //EVAL_POOL_HPP
+namespace metann {}
+#endif  // EVAL_POOL_HPP

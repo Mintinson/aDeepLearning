@@ -2,23 +2,22 @@
 // Created by asus on 2025/1/10.
 //
 
+#include <format>
+#include <iostream>
+
 #include <metann/data/data_device.hpp>
 #include <metann/data/matrix.hpp>
 #include <metann/operators/unary_operators.hpp>
-#include <format>
-#include <iostream>
 
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
+    for (std::size_t i = 0; i < r; ++i) {
         for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
@@ -26,9 +25,9 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
     }
     return res;
 }
+
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
     for (size_t i = 0; i < r; ++i) {
@@ -42,8 +41,7 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     return res;
 }
 
-void test_abs1()
-{
+void test_abs1() {
     std::cout << "Test abs case 1 ...\t";
     auto rm1 = gen_matrix<float>(4, 5, -3.3f, 0.1f);
     auto t = metann::abs(rm1);
@@ -72,8 +70,8 @@ void test_abs1()
     }
     std::cout << "done\n";
 }
-void test_abs2()
-{
+
+void test_abs2() {
     std::cout << "Test abs case 2 ...\t";
     {
         auto rm1 = gen_matrix<float>(4, 5, 0, 0.0001f);
@@ -103,8 +101,8 @@ void test_abs2()
     }
     std::cout << "done" << std::endl;
 }
-void test_abs3()
-{
+
+void test_abs3() {
     std::cout << "Test abs case 3 ...\t";
     auto rm1 = gen_batch_matrix<float>(4, 5, 7, -3.3f, 0.1f);
     auto t = metann::abs(rm1);
@@ -124,8 +122,7 @@ void test_abs3()
     std::cout << "done" << std::endl;
 }
 
-int main()
-{
+int main() {
     std::cout << std::format("{} {}", "hello", "world") << std::endl;
     test_abs1();
     test_abs2();

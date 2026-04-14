@@ -273,10 +273,10 @@ struct UnitWrapper<TernaryOperTags::Interpolate> {
             const auto& pV3 = m_oper3.data();
             const size_t rowNum = pV1.rowNum();
             const size_t colNum = pV1.colNum();
-            assert(p_v2.rowNum() == rowNum);
-            assert(p_v2.colNum() == colNum);
-            assert(p_v3.rowNum() == rowNum);
-            assert(p_v3.colNum() == colNum);
+            assert(pV2.rowNum() == rowNum);
+            assert(pV2.colNum() == colNum);
+            assert(pV3.rowNum() == rowNum);
+            assert(pV3.colNum() == colNum);
 
             m_evalOutput.allocate(rowNum, colNum);
             auto& res = m_evalOutput.mutableData();
@@ -488,7 +488,7 @@ struct UnitWrapper<TernaryOperTags::NegativeLogLikelihoodDerivative> {
 
             const size_t rowNum = pTgt.rowNum();
             const size_t colNum = pTgt.colNum();
-            const size_t batchNum = pTgt.BatchNum();
+            const size_t batchNum = pTgt.batchNum();
             assert(pPred.rowNum() == rowNum);
             assert(pPred.colNum() == colNum);
             assert(pPred.batchNum() == batchNum);

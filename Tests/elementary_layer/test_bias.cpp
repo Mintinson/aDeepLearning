@@ -1,3 +1,7 @@
+#include <iostream>
+#include <map>
+#include <string>
+
 #include <metann/data/data_device.hpp>
 #include <metann/data/matrix.hpp>
 #include <metann/layers/elementary/abs_layer.hpp>
@@ -8,22 +12,16 @@
 #include <metann/layers/grad_collector.hpp>
 #include <metann/layers/initializer.hpp>
 #include <metann/layers/interface_fun.hpp>
-#include <iostream>
-#include <map>
-#include <string>
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
-        for (std::size_t j = 0; j < c; ++j)
-        {
+    for (std::size_t i = 0; i < r; ++i) {
+        for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
         }
@@ -32,16 +30,12 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
 }
 
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
-    for (size_t i = 0; i < r; ++i)
-    {
-        for (size_t j = 0; j < c; ++j)
-        {
-            for (size_t k = 0; k < d; ++k)
-            {
+    for (size_t i = 0; i < r; ++i) {
+        for (size_t j = 0; j < c; ++j) {
+            for (size_t k = 0; k < d; ++k) {
                 res.setValue(k, i, j, static_cast<TElem>(start * scale));
                 start += 1.0f;
             }
@@ -50,8 +44,7 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     return res;
 }
 
-void test_bias_layer1()
-{
+void test_bias_layer1() {
     cout << "Test bias layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer>;
     static_assert(!RootLayer::isUpdate, "Test Error");
@@ -87,8 +80,7 @@ void test_bias_layer1()
     cout << "done" << endl;
 }
 
-void test_bias_layer2()
-{
+void test_bias_layer2() {
     cout << "Test bias layer case 2 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer>;
     static_assert(!RootLayer::isUpdate, "Test Error");
@@ -125,8 +117,7 @@ void test_bias_layer2()
     cout << "done" << endl;
 }
 
-void test_bias_layer3()
-{
+void test_bias_layer3() {
     cout << "Test bias layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer, UpdatePolicy>;
     static_assert(RootLayer::isUpdate, "Test Error");
@@ -189,8 +180,7 @@ void test_bias_layer3()
     cout << "done" << endl;
 }
 
-void test_bias_layer4()
-{
+void test_bias_layer4() {
     cout << "Test bias layer case 4 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isUpdate, "Test Error");
@@ -257,8 +247,7 @@ void test_bias_layer4()
     cout << "done" << endl;
 }
 
-void test_bias_layer5()
-{
+void test_bias_layer5() {
     cout << "Test bias layer case 5 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isUpdate, "Test Error");
@@ -347,8 +336,7 @@ void test_bias_layer5()
     cout << "done" << endl;
 }
 
-void test_bias_layer6()
-{
+void test_bias_layer6() {
     cout << "Test bias layer case 6 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isUpdate, "Test Error");
@@ -356,8 +344,8 @@ void test_bias_layer6()
 
     RootLayer layer("root", 400);
 
-    auto initializer = make_initializer<float, InitializerIs<struct ConstantTag>>()
-        .setFiller<ConstantTag>(ConstantFiller{ 0 });
+    auto initializer =
+        make_initializer<float, InitializerIs<struct ConstantTag>>().setFiller<ConstantTag>(ConstantFiller{0});
     std::map<std::string, Matrix<float, CPU>> loader;
     layer.init(initializer, loader);
 
@@ -365,18 +353,15 @@ void test_bias_layer6()
 
     auto& val = loader.begin()->second;
 
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             assert(fabs(val(i, j)) < 0.0001);
         }
     }
     cout << "done" << endl;
 }
 
-void test_bias_layer7()
-{
+void test_bias_layer7() {
     cout << "Test bias layer case 7 ...\t";
     using RootLayer = InjectPolicy_t<BiasLayer, UpdatePolicy, FeedbackOutputPolicy>;
     static_assert(RootLayer::isUpdate, "Test Error");
@@ -384,8 +369,8 @@ void test_bias_layer7()
 
     RootLayer layer("root", 400);
 
-    auto initializer = make_initializer<float, InitializerIs<struct ConstantTag>>()
-        .setFiller<ConstantTag>(ConstantFiller{ 1.5 });
+    auto initializer =
+        make_initializer<float, InitializerIs<struct ConstantTag>>().setFiller<ConstantTag>(ConstantFiller{1.5});
     std::map<std::string, Matrix<float, CPU>> loader;
     layer.init(initializer, loader);
 
@@ -393,20 +378,16 @@ void test_bias_layer7()
 
     auto& val = loader.begin()->second;
 
-    for (size_t i = 0; i < val.rowNum(); ++i)
-    {
-        for (size_t j = 0; j < val.colNum(); ++j)
-        {
+    for (size_t i = 0; i < val.rowNum(); ++i) {
+        for (size_t j = 0; j < val.colNum(); ++j) {
             assert(fabs(val(i, j) - 1.5) < 0.0001);
         }
     }
     cout << "done" << endl;
 }
 
-
-int main()
-{
-    std::cout << "Test bias layer ..." << std::endl;    
+int main() {
+    std::cout << "Test bias layer ..." << std::endl;
     test_bias_layer1();
     test_bias_layer2();
     test_bias_layer3();

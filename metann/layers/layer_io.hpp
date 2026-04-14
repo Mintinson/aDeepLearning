@@ -6,15 +6,10 @@
 #define LAYER_IO_HPP
 #include "../utils/vartype_dict.hpp"
 
-namespace metann
-{
-    struct LayerIO : public VarTypeDict<LayerIO>
-    {
-    };
+namespace metann {
+struct LayerIO : public VarTypeDict<LayerIO> {};
 
-    struct CostLayerIO : public VarTypeDict<CostLayerIO, struct CostLayerLabel>
-    {
-    };
-}
+struct CostLayerIO : public VarTypeDict<CostLayerIO, struct CostLayerLabel> {};
+}  // namespace metann
 
-#endif //LAYER_IO_HPP
+#endif  // LAYER_IO_HPP

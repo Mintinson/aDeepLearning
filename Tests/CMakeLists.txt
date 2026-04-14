@@ -38,6 +38,7 @@ set(METANN_TEST_CASES
 	"compose_kernel_test|composed_layer/test_compose_kernel.cpp"
 	"linear_layer_test|composed_layer/test_linear_layer.cpp"
 	"single_layer_test|composed_layer/test_single_layer.cpp"
+	"cost_layer_test|cost_layer_test/test_negative_log_likelihood_layer.cpp"
 )
 
 foreach(test_case IN LISTS METANN_TEST_CASES)
@@ -48,5 +49,5 @@ foreach(test_case IN LISTS METANN_TEST_CASES)
 endforeach()
 
 if(METANN_BUILD_EXPERIMENTAL_TESTS)
-	add_metann_test(cost_layer_test "cost_layer_test/test_negative_log_likelihood_layer.cpp")
+	# add_metann_test(cost_layer_test "cost_layer_test/test_negative_log_likelihood_layer.cpp")
 endif()

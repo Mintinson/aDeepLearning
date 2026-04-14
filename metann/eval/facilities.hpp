@@ -5,8 +5,6 @@
 #ifndef FACILITIES_HPP
 #define FACILITIES_HPP
 
-#include "../data/data_category.hpp"
-#include "../data/data_device.hpp"
 #include <cassert>
 #include <concepts>
 #include <list>
@@ -16,6 +14,9 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+
+#include "../data/data_category.hpp"
+#include "../data/data_device.hpp"
 
 namespace metann {
 template <DeviceConcept Device>
@@ -66,48 +67,35 @@ class EvalHandle {
     };
 
 public:
-    EvalHandle()
-        : m_data(std::make_shared<DataWithEvalInfo>())
-    {
-    }
+    EvalHandle() : m_data(std::make_shared<DataWithEvalInfo>()) {}
 
-    bool isEvaluated() const noexcept
-    {
-        return m_data->m_eval;
-    }
+    bool isEvaluated() const noexcept { return m_data->m_eval; }
 
-    Data& mutableData()
-    {
+    Data& mutableData() {
         if (isEvaluated()) {
             throw std::runtime_error("Data is already evaluated.");
         }
         return m_data->m_data;
     }
 
-    void setEval()
-    {
+    void setEval() {
         if (isEvaluated()) {
             throw std::runtime_error("Data is already evaluated.");
         }
         m_data->m_eval = true;
     }
 
-    const Data& data() const
-    {
+    const Data& data() const {
         if (!isEvaluated()) {
             throw std::runtime_error("Data is not evaluated.");
         }
         return m_data->m_data;
     }
 
-    const void* dataPtr() const
-    {
-        return m_data.get();
-    }
+    const void* dataPtr() const { return m_data.get(); }
 
     template <typename... Params>
-    void allocate(Params&&... params) const
-    {
+    void allocate(Params&&... params) const {
         if (isEvaluated()) {
             throw std::runtime_error("Data is already evaluated.");
         }
@@ -121,20 +109,11 @@ private:
 template <DataConcept Data>
 class ConstEvalHandle {
 public:
-    explicit ConstEvalHandle(Data data)
-        : m_constData(std::move(data))
-    {
-    }
+    explicit ConstEvalHandle(Data data) : m_constData(std::move(data)) {}
 
-    const Data& data() const
-    {
-        return m_constData;
-    }
+    const Data& data() const { return m_constData; }
 
-    const void* dataPtr() const
-    {
-        return &m_constData;
-    }
+    const void* dataPtr() const { return &m_constData; }
 
 private:
     Data m_constData;
@@ -143,91 +122,61 @@ private:
 template <DataConcept Data>
 class ConstEvalHandle<EvalHandle<Data>> {
 public:
-    explicit ConstEvalHandle(EvalHandle<Data> data)
-        : m_constData(std::move(data))
-    {
-    }
+    explicit ConstEvalHandle(EvalHandle<Data> data) : m_constData(std::move(data)) {}
 
-    const Data& data() const
-    {
-        return m_constData.data();
-    }
+    const Data& data() const { return m_constData.data(); }
 
-    const void* dataPtr() const
-    {
-        return m_constData.dataPtr();
-    }
+    const void* dataPtr() const { return m_constData.dataPtr(); }
 
 private:
     EvalHandle<Data> m_constData;
 };
 
 template <DataConcept Data>
-auto make_const_eval_handle(const Data& data)
-{
+auto make_const_eval_handle(const Data& data) {
     return ConstEvalHandle<Data>(data);
 }
 
 namespace details {
-    template <DataConcept Data>
-    class DynamicHandleDataBase {
-    public:
-        virtual ~DynamicHandleDataBase() = default;
-        virtual const Data& data() const = 0;
-        virtual const void* dataPtr() const = 0;
-    };
+template <DataConcept Data>
+class DynamicHandleDataBase {
+public:
+    virtual ~DynamicHandleDataBase() = default;
+    virtual const Data& data() const = 0;
+    virtual const void* dataPtr() const = 0;
+};
 
-    template <typename TData>
-    class DynamicHandleData;
+template <typename TData>
+class DynamicHandleData;
 
-    template <DataConcept Data>
-    class DynamicHandleData<ConstEvalHandle<Data>> final
-        : public DynamicHandleDataBase<Data> {
-    public:
-        explicit DynamicHandleData(ConstEvalHandle<Data> data)
-            : DynamicHandleDataBase<Data>()
-            , m_data(std::move(data))
-        {
-        }
+template <DataConcept Data>
+class DynamicHandleData<ConstEvalHandle<Data>> final : public DynamicHandleDataBase<Data> {
+public:
+    explicit DynamicHandleData(ConstEvalHandle<Data> data) : DynamicHandleDataBase<Data>(), m_data(std::move(data)) {}
 
-        const Data& data() const override
-        {
-            return m_data.data();
-        }
+    const Data& data() const override { return m_data.data(); }
 
-        const void* dataPtr() const override
-        {
-            return m_data.dataPtr();
-        }
+    const void* dataPtr() const override { return m_data.dataPtr(); }
 
-    private:
-        ConstEvalHandle<Data> m_data;
-    };
+private:
+    ConstEvalHandle<Data> m_data;
+};
 
-    template <DataConcept TData>
-    class DynamicHandleData<ConstEvalHandle<EvalHandle<TData>>> final
-        : public DynamicHandleDataBase<TData> {
-    public:
-        explicit DynamicHandleData(ConstEvalHandle<EvalHandle<TData>> data)
-            : DynamicHandleDataBase<TData>()
-            , m_data(std::move(data))
-        {
-        }
+template <DataConcept TData>
+class DynamicHandleData<ConstEvalHandle<EvalHandle<TData>>> final : public DynamicHandleDataBase<TData> {
+public:
+    explicit DynamicHandleData(ConstEvalHandle<EvalHandle<TData>> data)
+        : DynamicHandleDataBase<TData>()
+        , m_data(std::move(data)) {}
 
-        const TData& data() const override
-        {
-            return m_data.data();
-        }
+    const TData& data() const override { return m_data.data(); }
 
-        const void* dataPtr() const override
-        {
-            return m_data.dataPtr();
-        }
+    const void* dataPtr() const override { return m_data.dataPtr(); }
 
-    private:
-        ConstEvalHandle<EvalHandle<TData>> m_data;
-    };
-}
+private:
+    ConstEvalHandle<EvalHandle<TData>> m_data;
+};
+}  // namespace details
 
 template <DataConcept Data>
 class DynamicConstEvalHandle {
@@ -236,20 +185,13 @@ class DynamicConstEvalHandle {
 public:
     template <typename TRealHandle>
     explicit DynamicConstEvalHandle(TRealHandle data)
-        : m_data(std::make_shared<details::DynamicHandleData<TRealHandle>>(std::move(data)))
-    {
+        : m_data(std::make_shared<details::DynamicHandleData<TRealHandle>>(std::move(data))) {
         assert(m_data);
     }
 
-    const Data& data() const
-    {
-        return m_data->data();
-    }
+    const Data& data() const { return m_data->data(); }
 
-    const void* dataPtr() const
-    {
-        return m_data->dataPtr();
-    }
+    const void* dataPtr() const { return m_data->dataPtr(); }
 
 private:
     std::shared_ptr<BaseData> m_data;
@@ -261,20 +203,14 @@ class TrivialEvalPool;
 template <>
 class TrivialEvalPool<CPU> : public BaseEvalPool<CPU> {
 public:
-    static TrivialEvalPool& instance()
-    {
+    static TrivialEvalPool& instance() {
         static TrivialEvalPool inst;
         return inst;
     }
 
-    void process(std::shared_ptr<BaseEvalUnit<CPU>>& evalUnit) override
-    {
-        evalUnit->eval();
-    }
+    void process(std::shared_ptr<BaseEvalUnit<CPU>>& evalUnit) override { evalUnit->eval(); }
 
-    void barrier() override
-    {
-    }
+    void barrier() override {}
 
 private:
     TrivialEvalPool() = default;
@@ -285,20 +221,11 @@ class EvalBuffer {
 public:
     using DataType = Data;
 
-    auto handle() const
-    {
-        return m_handle;
-    }
+    auto handle() const { return m_handle; }
 
-    auto constHandle() const
-    {
-        return ConstEvalHandle<EvalHandle<Data>>(m_handle);
-    }
+    auto constHandle() const { return ConstEvalHandle<EvalHandle<Data>>(m_handle); }
 
-    bool isEvaluated() const
-    {
-        return m_handle.isEvaluated();
-    }
+    bool isEvaluated() const { return m_handle.isEvaluated(); }
 
 private:
     EvalHandle<Data> m_handle;
@@ -307,40 +234,31 @@ private:
 template <typename Device>
 class EvalLayer {
 public:
-    [[nodiscard]] std::size_t size() const
-    {
-        return m_evalSeq.size();
-    }
+    [[nodiscard]] std::size_t size() const { return m_evalSeq.size(); }
 
-    [[nodiscard]] EvalCluster<Device>& operator[](std::size_t index)
-    {
-        return m_evalSeq[index];
-    }
+    [[nodiscard]] EvalCluster<Device>& operator[](std::size_t index) { return m_evalSeq[index]; }
 
-    bool empty() const
-    {
-        return m_evalSeq.empty();
-    }
+    bool empty() const { return m_evalSeq.empty(); }
 
-    void clear()
-    {
+    void clear() {
         m_evalSeq.clear();
         m_operands.clear();
         m_outputs.clear();
     }
 
     template <typename EvalGroup, typename EvalUnit>
-    void evalRegister(EvalUnit&& evalReq, const void* resPtr,
-        const std::vector<const void*>& paramPtr)
-    {
-        if (!resPtr)
+    void evalRegister(EvalUnit&& evalReq, const void* resPtr, const std::vector<const void*>& paramPtr) {
+        if (!resPtr) {
             return;
-        if (m_outputs.contains(resPtr))
+        }
+        if (m_outputs.contains(resPtr)) {
             return;
+        }
         std::size_t depth = 0;
         for (auto p : paramPtr) {
-            if (auto it = m_outputs.find(p); it != m_outputs.end())
+            if (auto it = m_outputs.find(p); it != m_outputs.end()) {
                 depth = std::max(depth, it->second);
+            }
         }
         depth += 1;
         if (m_evalSeq.size() <= depth) {
@@ -355,7 +273,7 @@ public:
         }
         it->second->merge(std::forward<EvalUnit>(evalReq));
 
-        m_outputs.insert({ resPtr, depth });
+        m_outputs.insert({resPtr, depth});
         ;
     }
 
@@ -372,31 +290,22 @@ enum class EvalPoolEnum {
 template <DeviceConcept Device>
 class EvalPlan {
 public:
-    static void setEvalPool(EvalPoolEnum epType)
-    {
-        globalEvalPool() = epType;
-    }
+    static void setEvalPool(EvalPoolEnum epType) { globalEvalPool() = epType; }
 
     template <EvalGroupConcept EvalGroup, EvalUnitConcept EvalUnit>
-    static void registerFun(EvalUnit&& evalReq, const void* outputPtr,
-        const std::vector<const void*>& paramPtr)
-    {
-        threadInst().template evalRegister<EvalGroup>(
-            std::forward<EvalUnit>(evalReq),
-            outputPtr,
-            paramPtr);
+    static void registerFun(EvalUnit&& evalReq, const void* outputPtr, const std::vector<const void*>& paramPtr) {
+        threadInst().template evalRegister<EvalGroup>(std::forward<EvalUnit>(evalReq), outputPtr, paramPtr);
     }
 
-    static void eval()
-    {
+    static void eval() {
         EvalPlan& plan = threadInst();
         if ((threadEvalPool() != globalEvalPool()) || (!plan.m_evalPool)) {
             switch (globalEvalPool()) {
-            case EvalPoolEnum::Trivial:
-                plan.m_evalPool = &(TrivialEvalPool<Device>::instance());
-                break;
-            default:
-                assert(false);
+                case EvalPoolEnum::Trivial:
+                    plan.m_evalPool = &(TrivialEvalPool<Device>::instance());
+                    break;
+                default:
+                    assert(false);
             }
             threadEvalPool() = globalEvalPool();
         }
@@ -408,45 +317,35 @@ public:
     }
 
 private:
-    EvalPlan()
-        : m_evalPool(nullptr)
-    {
-        m_evalLayers.resize(1);
-    }
+    EvalPlan() : m_evalPool(nullptr) { m_evalLayers.resize(1); }
 
-    static EvalPoolEnum& globalEvalPool()
-    {
+    static EvalPoolEnum& globalEvalPool() {
         static EvalPoolEnum inst = EvalPoolEnum::Trivial;
         return inst;
     }
 
-    static EvalPoolEnum& threadEvalPool()
-    {
+    static EvalPoolEnum& threadEvalPool() {
         static thread_local EvalPoolEnum inst = globalEvalPool();
         return inst;
     }
 
-    static EvalPlan& threadInst()
-    {
+    static EvalPlan& threadInst() {
         static thread_local EvalPlan inst;
         return inst;
     }
 
     template <typename EvalGroup, typename EvalUnit>
-    void evalRegister(EvalUnit&& evalReq, const void* outputPtr,
-        const std::vector<const void*>& paramPtr)
-    {
+    void evalRegister(EvalUnit&& evalReq, const void* outputPtr, const std::vector<const void*>& paramPtr) {
         auto& curLayer = m_evalLayers.back();
-        curLayer.template evalRegister<EvalGroup>(
-            std::forward<EvalUnit>(evalReq), outputPtr, paramPtr);
+        curLayer.template evalRegister<EvalGroup>(std::forward<EvalUnit>(evalReq), outputPtr, paramPtr);
     }
 
-    void doLayerEval()
-    {
+    void doLayerEval() {
         EvalLayer<Device>& curLayer = m_evalLayers.back();
-        if (curLayer.empty())
+        if (curLayer.empty()) {
             return;
-        m_evalLayers.push_back(EvalLayer<Device> {});
+        }
+        m_evalLayers.push_back(EvalLayer<Device>{});
         const std::size_t seqLen = curLayer.size();
         for (size_t i = 0; i < seqLen; ++i) {
             EvalCluster<Device>& ec = curLayer[i];
@@ -469,8 +368,7 @@ private:
 };
 
 template <typename TData>
-auto evaluate(const TData& data)
-{
+auto evaluate(const TData& data) {
     using DeviceType = typename TData::DeviceType;
     auto evalHandle = data.evalRegister();
     EvalPlan<DeviceType>::eval();
@@ -478,8 +376,8 @@ auto evaluate(const TData& data)
 }
 
 namespace eval {
-    template <typename EvalType>
-    struct UnitWrapper;
-}
-}
-#endif // FACILITIES_HPP
+template <typename EvalType>
+struct UnitWrapper;
+}  // namespace eval
+}  // namespace metann
+#endif  // FACILITIES_HPP

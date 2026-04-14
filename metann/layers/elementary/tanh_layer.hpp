@@ -22,18 +22,16 @@ class TanhLayer {
     using CurLayerPolicies = PlainPolicy_t<PoliciesContainer, PolicyContainer<>>;
 
 public:
-    static constexpr bool isFeedbackOutput = details::PolicySelect_t<
-        FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
+    static constexpr bool isFeedbackOutput =
+        details::PolicySelect_t<FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
     static constexpr bool isUpdate = false;
     using InputType = LayerIO;
     using OutputType = LayerIO;
 
     template <typename InType>
-    auto feedForward(const InType& input)
-    {
+    auto feedForward(const InType& input) {
         const auto& val = input.template get<LayerIO>();
-        static_assert(!std::is_same_v<std::decay_t<decltype(val)>, details::NullParameter>,
-            "parameter1 is invalid");
+        static_assert(!std::is_same_v<std::decay_t<decltype(val)>, details::NullParameter>, "parameter1 is invalid");
         auto tmp = tanh(val);
         if constexpr (isFeedbackOutput) {
             m_data.push(make_dynamic(tmp));
@@ -42,8 +40,7 @@ public:
     }
 
     template <typename GradType>
-    auto feedBackward(const GradType& grad)
-    {
+    auto feedBackward(const GradType& grad) {
         if constexpr (isFeedbackOutput) {
             if (m_data.empty()) {
                 throw std::runtime_error("feedBackward: Empty Inner Data");
@@ -59,25 +56,25 @@ public:
         }
     }
 
-    void neutralInvariant()
-    {
+    void neutralInvariant() {
         if constexpr (isFeedbackOutput) {
-            if (m_data.empty())
+            if (m_data.empty()) {
                 return;
+            }
             throw std::runtime_error("neutralInvariant: Neural Invariant Fail!");
         }
     }
 
 private:
-    using DataType = details::LayerInternalBuf_t<isFeedbackOutput,
-        details::PolicySelect_t<InputPolicy, CurLayerPolicies>::BatchModel,
-        typename details::PolicySelect_t<
-            OperandPolicy, CurLayerPolicies>::ElementType,
-        typename details::PolicySelect_t<
-            OperandPolicy, CurLayerPolicies>::Device,
-        CategoryTags::Matrix, CategoryTags::BatchMatrix>;
+    using DataType =
+        details::LayerInternalBuf_t<isFeedbackOutput,
+                                    details::PolicySelect_t<InputPolicy, CurLayerPolicies>::BatchModel,
+                                    typename details::PolicySelect_t<OperandPolicy, CurLayerPolicies>::ElementType,
+                                    typename details::PolicySelect_t<OperandPolicy, CurLayerPolicies>::Device,
+                                    CategoryTags::Matrix,
+                                    CategoryTags::BatchMatrix>;
     DataType m_data;
 };
-}
+}  // namespace metann
 
-#endif // TANH_LAYER_HPP
+#endif  // TANH_LAYER_HPP

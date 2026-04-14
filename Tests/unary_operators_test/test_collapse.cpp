@@ -2,23 +2,22 @@
 // Created by asus on 2025/1/10.
 //
 
+#include <format>
+#include <iostream>
+
 #include <metann/data/data_device.hpp>
 #include <metann/data/matrix.hpp>
 #include <metann/operators/unary_operators.hpp>
-#include <format>
-#include <iostream>
 
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
+    for (std::size_t i = 0; i < r; ++i) {
         for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
@@ -26,9 +25,9 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
     }
     return res;
 }
+
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
     for (size_t i = 0; i < r; ++i) {
@@ -41,8 +40,8 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     }
     return res;
 }
-void test_collapse1()
-{
+
+void test_collapse1() {
     cout << "Test collapse case 1 ...\t";
     auto rm1 = gen_batch_matrix<float>(4, 5, 7, 1.0f, 0.0001f);
     auto t = collapse(rm1);
@@ -64,8 +63,8 @@ void test_collapse1()
     }
     cout << "done" << endl;
 }
-void test_collapse2()
-{
+
+void test_collapse2() {
     cout << "Test collapse case 2 ...\t";
     {
         auto rm1 = gen_batch_matrix<float>(4, 5, 7, 1.0f, 0.0001f);
@@ -98,11 +97,10 @@ void test_collapse2()
     }
     cout << "done" << endl;
 }
-int main()
-{
+
+int main() {
     std::cout << std::format("Collapse Tests Start") << std::endl;
     test_collapse1();
     test_collapse2();
     std::cout << std::format("Collapse Tests End") << std::endl;
-
 }

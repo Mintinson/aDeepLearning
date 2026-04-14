@@ -1,25 +1,22 @@
-#include <metann/data/data_category.hpp>
-#include  <metann/data/array.hpp>
-#include <metann/data/data_device.hpp>
 #include <format>
 #include <iostream>
 
-class A
-{
-};
+#include <metann/data/array.hpp>
+#include <metann/data/data_category.hpp>
+#include <metann/data/data_device.hpp>
 
-namespace metann
-{
-    template <>
-    constexpr bool IsBatchMatrixHelper_v<A> = true;
-}
+class A {};
+
+namespace metann {
+template <>
+constexpr bool IsBatchMatrixHelper_v<A> = true;
+}  // namespace metann
 
 using namespace metann;
 using CheckElement = float;
 using CheckDevice = CPU;
 
-static void test_array_1()
-{
+static void test_array_1() {
     static_assert(std::is_default_constructible_v<Batch<float, CPU, CategoryTags::Matrix>>, "  456");
     static_assert(DataConcept<Matrix<CheckElement, CheckDevice>>, "error");
     static_assert(DeviceConcept<CheckDevice>, "error");
@@ -42,10 +39,8 @@ static void test_array_1()
     auto me1 = Matrix<CheckElement, CheckDevice>(10, 20);
     auto me2 = Matrix<CheckElement, CheckDevice>(10, 20);
     auto me3 = Matrix<CheckElement, CheckDevice>(10, 20);
-    for (size_t i = 0; i < 10; ++i)
-    {
-        for (size_t j = 0; j < 20; ++j)
-        {
+    for (size_t i = 0; i < 10; ++i) {
+        for (size_t j = 0; j < 20; ++j) {
             me1.setValue(i, j, static_cast<float>(c++));
             me2.setValue(i, j, static_cast<float>(c++));
             me3.setValue(i, j, static_cast<float>(c++));
@@ -61,10 +56,8 @@ static void test_array_1()
     EvalPlan<CPU>::eval();
     auto rm2 = evalHandle.data();
 
-    for (size_t i = 0; i < 10; ++i)
-    {
-        for (size_t j = 0; j < 20; ++j)
-        {
+    for (size_t i = 0; i < 10; ++i) {
+        for (size_t j = 0; j < 20; ++j) {
             assert(rm1[0](i, j) == me1(i, j));
             assert(rm1[1](i, j) == me2(i, j));
             assert(rm1[2](i, j) == me3(i, j));
@@ -73,8 +66,7 @@ static void test_array_1()
     std::cout << "done" << std::endl;
 }
 
-void TestArray2()
-{
+void TestArray2() {
     std::cout << "Test array case 2 (scalar array)...\t";
     static_assert(IsBatchScalar_v<Array<Scalar<CheckElement, CheckDevice>>>, "Test Error");
     static_assert(IsBatchScalar_v<Array<Scalar<CheckElement, CheckDevice>>&>, "Test Error");
@@ -102,8 +94,7 @@ void TestArray2()
     std::cout << "done" << std::endl;
 }
 
-void TestArray3()
-{
+void TestArray3() {
     std::cout << "Test array case 3 ...\t";
 
     {
@@ -134,13 +125,12 @@ void TestArray3()
     std::cout << "done" << std::endl;
 }
 
-int main()
-{
+int main() {
     std::cout << "Hello world!" << std::endl;
 
     std::cout << std::format("Hello world!") << std::endl;
     std::cout << metann::IsBatchMatrix_v<A&> << std::endl;
-    metann::Matrix<float> mat{ 100, 200 };
+    metann::Matrix<float> mat{100, 200};
     test_array_1();
     TestArray2();
     TestArray3();

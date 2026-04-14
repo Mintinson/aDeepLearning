@@ -21,21 +21,18 @@ class MulLayer {
     using CurLayerPolicies = PlainPolicy_t<PoliciesContainer, PolicyContainer<>>;
 
 public:
-    static constexpr bool isFeedbackOutput = details::PolicySelect_t<
-        FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
+    static constexpr bool isFeedbackOutput =
+        details::PolicySelect_t<FeedbackPolicy, CurLayerPolicies>::isFeedbackOutput;
     static constexpr bool isUpdate = false;
     using InputType = MulLayerInput;
     using OutputType = LayerIO;
 
     template <typename InType>
-    auto feedForward(const InType& input)
-    {
+    auto feedForward(const InType& input) {
         const auto& val1 = input.template get<MulLayerIn1>();
         const auto& val2 = input.template get<MulLayerIn2>();
-        static_assert(!std::is_same_v<std::decay_t<decltype(val1)>, details::NullParameter>,
-            "parameter1 is invalid");
-        static_assert(!std::is_same_v<std::decay_t<decltype(val2)>, details::NullParameter>,
-            "parameter2 is invalid");
+        static_assert(!std::is_same_v<std::decay_t<decltype(val1)>, details::NullParameter>, "parameter1 is invalid");
+        static_assert(!std::is_same_v<std::decay_t<decltype(val2)>, details::NullParameter>, "parameter2 is invalid");
         if constexpr (isFeedbackOutput) {
             m_data1.push(make_dynamic(val1));
             m_data2.push(make_dynamic(val2));
@@ -44,8 +41,7 @@ public:
     }
 
     template <typename GradType>
-    auto feedBackward(const GradType& grad)
-    {
+    auto feedBackward(const GradType& grad) {
         if constexpr (isFeedbackOutput) {
             if (m_data1.empty() || m_data2.empty()) {
                 throw std::runtime_error("feedBackward: Empty Inner Data");
@@ -64,26 +60,26 @@ public:
         }
     }
 
-    void neutralInvariant()
-    {
+    void neutralInvariant() {
         if constexpr (isFeedbackOutput) {
-            if (m_data1.empty() && m_data2.empty())
+            if (m_data1.empty() && m_data2.empty()) {
                 return;
+            }
             throw std::runtime_error("neutralInvariant: Neural Invariant Fail!");
         }
     }
 
 private:
-    using DataType = details::LayerInternalBuf_t<isFeedbackOutput,
-        details::PolicySelect_t<InputPolicy, CurLayerPolicies>::BatchModel,
-        typename details::PolicySelect_t<
-            OperandPolicy, CurLayerPolicies>::ElementType,
-        typename details::PolicySelect_t<
-            OperandPolicy, CurLayerPolicies>::Device,
-        CategoryTags::Matrix, CategoryTags::BatchMatrix>;
+    using DataType =
+        details::LayerInternalBuf_t<isFeedbackOutput,
+                                    details::PolicySelect_t<InputPolicy, CurLayerPolicies>::BatchModel,
+                                    typename details::PolicySelect_t<OperandPolicy, CurLayerPolicies>::ElementType,
+                                    typename details::PolicySelect_t<OperandPolicy, CurLayerPolicies>::Device,
+                                    CategoryTags::Matrix,
+                                    CategoryTags::BatchMatrix>;
     DataType m_data1;
     DataType m_data2;
 };
-} // namespace metann
+}  // namespace metann
 
-#endif // MUL_LAYER_HPP
+#endif  // MUL_LAYER_HPP

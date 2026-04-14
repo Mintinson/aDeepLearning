@@ -1,3 +1,8 @@
+#include <cmath>
+#include <cstddef>
+#include <iostream>
+#include <map>
+
 #include <metann/layers/compose/single_layer.hpp>
 #include <metann/layers/grad_collector.hpp>
 #include <metann/layers/initializer.hpp>
@@ -5,35 +10,24 @@
 #include <metann/layers/policies/single_layer_policy.hpp>
 #include <metann/operators/unary_operators.hpp>
 
-#include <cmath>
-#include <cstddef>
-#include <iostream>
-#include <map>
-
 using namespace metann;
 
-namespace
-{
-void print_matrix(const Matrix<float, CPU>& m, const char* title)
-{
+namespace {
+void print_matrix(const Matrix<float, CPU>& m, const char* title) {
     std::cout << title << " (" << m.rowNum() << "x" << m.colNum() << ")\n";
-    for (std::size_t r = 0; r < m.rowNum(); ++r)
-    {
-        for (std::size_t c = 0; c < m.colNum(); ++c)
-        {
+    for (std::size_t r = 0; r < m.rowNum(); ++r) {
+        for (std::size_t c = 0; c < m.colNum(); ++c) {
             std::cout << m(r, c);
-            if (c + 1 < m.colNum())
-            {
+            if (c + 1 < m.colNum()) {
                 std::cout << "  ";
             }
         }
         std::cout << '\n';
     }
 }
-}
+}  // namespace
 
-int main()
-{
+int main() {
     using DemoLayer = InjectPolicy_t<SingleLayer, UpdatePolicy, FeedbackOutputPolicy>;
     DemoLayer layer("demo", 2, 1);
 
@@ -79,8 +73,7 @@ int main()
     print_matrix(grad_input, "dLoss/dInput");
 
     std::cout << "\nCollected parameter gradients\n";
-    for (auto& item : collector)
-    {
+    for (auto& item : collector) {
         auto grad_matrix = evaluate(collapse(item.m_grad));
         print_matrix(item.m_weight, "Weight snapshot");
         print_matrix(grad_matrix, "dLoss/dWeight");

@@ -5,9 +5,10 @@
 #ifndef INIT_POLICY_HPP
 #define INIT_POLICY_HPP
 
-#include "../../policy/policy.hpp"
 #include <concepts>
 #include <random>
+
+#include "../../policy/policy.hpp"
 
 namespace metann {
 struct InitPolicy {
@@ -135,6 +136,6 @@ struct PickInitializer {
 template <typename PolicyCont, typename SpecInitializer>
     requires IsPolicyContainer_v<PolicyCont>
 using PickInitializer_t = typename PickInitializer<PolicyCont, SpecInitializer>::type;
-} // namespace metann
+}  // namespace metann
 
-#endif // INIT_POLICY_HPP
+#endif  // INIT_POLICY_HPP

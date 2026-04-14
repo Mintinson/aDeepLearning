@@ -1,29 +1,30 @@
-#include <metann/data/matrix.hpp>
-#include <metann/operators/binary_operators.hpp>
-#include <metann/operators/unary_operators.hpp>
-
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 #include <iomanip>
 #include <iostream>
 
+#include <metann/data/matrix.hpp>
+#include <metann/operators/binary_operators.hpp>
+#include <metann/operators/unary_operators.hpp>
+
 using namespace metann;
 
-namespace
-{
-Matrix<float, CPU> make_xor_input()
-{
+namespace {
+Matrix<float, CPU> make_xor_input() {
     Matrix<float, CPU> x(4, 2);
-    x.setValue(0, 0, 0.0f); x.setValue(0, 1, 0.0f);
-    x.setValue(1, 0, 0.0f); x.setValue(1, 1, 1.0f);
-    x.setValue(2, 0, 1.0f); x.setValue(2, 1, 0.0f);
-    x.setValue(3, 0, 1.0f); x.setValue(3, 1, 1.0f);
+    x.setValue(0, 0, 0.0f);
+    x.setValue(0, 1, 0.0f);
+    x.setValue(1, 0, 0.0f);
+    x.setValue(1, 1, 1.0f);
+    x.setValue(2, 0, 1.0f);
+    x.setValue(2, 1, 0.0f);
+    x.setValue(3, 0, 1.0f);
+    x.setValue(3, 1, 1.0f);
     return x;
 }
 
-Matrix<float, CPU> make_xor_label()
-{
+Matrix<float, CPU> make_xor_label() {
     Matrix<float, CPU> y(4, 1);
     y.setValue(0, 0, 0.0f);
     y.setValue(1, 0, 1.0f);
@@ -32,29 +33,23 @@ Matrix<float, CPU> make_xor_label()
     return y;
 }
 
-Matrix<float, CPU> add_row_bias(const Matrix<float, CPU>& x, const Matrix<float, CPU>& b)
-{
+Matrix<float, CPU> add_row_bias(const Matrix<float, CPU>& x, const Matrix<float, CPU>& b) {
     Matrix<float, CPU> out(x.rowNum(), x.colNum());
-    for (std::size_t i = 0; i < x.rowNum(); ++i)
-    {
-        for (std::size_t j = 0; j < x.colNum(); ++j)
-        {
+    for (std::size_t i = 0; i < x.rowNum(); ++i) {
+        for (std::size_t j = 0; j < x.colNum(); ++j) {
             out.setValue(i, j, x(i, j) + b(0, j));
         }
     }
     return out;
 }
 
-Matrix<float, CPU> mean_rows(const Matrix<float, CPU>& x)
-{
+Matrix<float, CPU> mean_rows(const Matrix<float, CPU>& x) {
     Matrix<float, CPU> out(1, x.colNum());
     const float scale = 1.0f / static_cast<float>(x.rowNum());
 
-    for (std::size_t j = 0; j < x.colNum(); ++j)
-    {
+    for (std::size_t j = 0; j < x.colNum(); ++j) {
         float sum = 0.0f;
-        for (std::size_t i = 0; i < x.rowNum(); ++i)
-        {
+        for (std::size_t i = 0; i < x.rowNum(); ++i) {
             sum += x(i, j);
         }
         out.setValue(0, j, sum * scale);
@@ -63,24 +58,19 @@ Matrix<float, CPU> mean_rows(const Matrix<float, CPU>& x)
     return out;
 }
 
-void sgd_update(Matrix<float, CPU>& param, const Matrix<float, CPU>& grad, float learning_rate)
-{
-    for (std::size_t i = 0; i < param.rowNum(); ++i)
-    {
-        for (std::size_t j = 0; j < param.colNum(); ++j)
-        {
+void sgd_update(Matrix<float, CPU>& param, const Matrix<float, CPU>& grad, float learning_rate) {
+    for (std::size_t i = 0; i < param.rowNum(); ++i) {
+        for (std::size_t j = 0; j < param.colNum(); ++j) {
             param.setValue(i, j, param(i, j) - learning_rate * grad(i, j));
         }
     }
 }
 
-float binary_cross_entropy(const Matrix<float, CPU>& p, const Matrix<float, CPU>& y)
-{
+float binary_cross_entropy(const Matrix<float, CPU>& p, const Matrix<float, CPU>& y) {
     constexpr float eps = 1e-6f;
     float total = 0.0f;
 
-    for (std::size_t i = 0; i < p.rowNum(); ++i)
-    {
+    for (std::size_t i = 0; i < p.rowNum(); ++i) {
         const float pred = std::clamp(p(i, 0), eps, 1.0f - eps);
         const float label = y(i, 0);
         total += -(label * std::log(pred) + (1.0f - label) * std::log(1.0f - pred));
@@ -88,19 +78,27 @@ float binary_cross_entropy(const Matrix<float, CPU>& p, const Matrix<float, CPU>
 
     return total / static_cast<float>(p.rowNum());
 }
-}
+}  // namespace
 
-int main()
-{
+int main() {
     Matrix<float, CPU> x = make_xor_input();
     Matrix<float, CPU> y = make_xor_label();
 
     Matrix<float, CPU> w1(2, 4);
-    w1.setValue(0, 0, 0.80f); w1.setValue(0, 1, -0.40f); w1.setValue(0, 2, 0.30f); w1.setValue(0, 3, -0.90f);
-    w1.setValue(1, 0, 0.70f); w1.setValue(1, 1, 0.20f); w1.setValue(1, 2, -0.50f); w1.setValue(1, 3, -0.30f);
+    w1.setValue(0, 0, 0.80f);
+    w1.setValue(0, 1, -0.40f);
+    w1.setValue(0, 2, 0.30f);
+    w1.setValue(0, 3, -0.90f);
+    w1.setValue(1, 0, 0.70f);
+    w1.setValue(1, 1, 0.20f);
+    w1.setValue(1, 2, -0.50f);
+    w1.setValue(1, 3, -0.30f);
 
     Matrix<float, CPU> b1(1, 4);
-    b1.setValue(0, 0, 0.00f); b1.setValue(0, 1, 0.00f); b1.setValue(0, 2, 0.00f); b1.setValue(0, 3, 0.00f);
+    b1.setValue(0, 0, 0.00f);
+    b1.setValue(0, 1, 0.00f);
+    b1.setValue(0, 2, 0.00f);
+    b1.setValue(0, 3, 0.00f);
 
     Matrix<float, CPU> w2(4, 1);
     w2.setValue(0, 0, 0.60f);
@@ -115,8 +113,7 @@ int main()
     const int epochs = 6000;
     const float batch_size = static_cast<float>(x.rowNum());
 
-    for (int epoch = 0; epoch < epochs; ++epoch)
-    {
+    for (int epoch = 0; epoch < epochs; ++epoch) {
         auto z1_linear = evaluate(dot(x, w1));
         auto z1 = add_row_bias(z1_linear, b1);
         auto a1 = evaluate(metann::tanh(z1));
@@ -143,10 +140,9 @@ int main()
         sgd_update(w1, dw1, learning_rate);
         sgd_update(b1, db1, learning_rate);
 
-        if (epoch % 800 == 0 || epoch == epochs - 1)
-        {
-            std::cout << "epoch=" << std::setw(4) << epoch
-                      << "  bce=" << std::fixed << std::setprecision(6) << loss << '\n';
+        if (epoch % 800 == 0 || epoch == epochs - 1) {
+            std::cout << "epoch=" << std::setw(4) << epoch << "  bce=" << std::fixed << std::setprecision(6) << loss
+                      << '\n';
         }
     }
 
@@ -157,19 +153,15 @@ int main()
 
     int correct = 0;
     std::cout << "\nXOR predictions\n";
-    for (std::size_t i = 0; i < x.rowNum(); ++i)
-    {
+    for (std::size_t i = 0; i < x.rowNum(); ++i) {
         const int pred = probs(i, 0) >= 0.5f ? 1 : 0;
         const int label = static_cast<int>(y(i, 0));
-        if (pred == label)
-        {
+        if (pred == label) {
             ++correct;
         }
 
         std::cout << "x=[" << x(i, 0) << ", " << x(i, 1) << "]"
-                  << "  p(y=1)=" << probs(i, 0)
-                  << "  pred=" << pred
-                  << "  label=" << label << '\n';
+                  << "  p(y=1)=" << probs(i, 0) << "  pred=" << pred << "  label=" << label << '\n';
     }
 
     const float acc = static_cast<float>(correct) / static_cast<float>(x.rowNum());

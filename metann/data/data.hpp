@@ -10,4 +10,4 @@
 #include "matrix.hpp"
 #include "scalar.hpp"
 
-#endif // DATA_HPP
+#endif  // DATA_HPP

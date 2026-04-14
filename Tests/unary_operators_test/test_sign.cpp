@@ -2,23 +2,22 @@
 // Created by asus on 2025/1/10.
 //
 
+#include <format>
+#include <iostream>
+
 #include <metann/data/data_device.hpp>
 #include <metann/data/matrix.hpp>
 #include <metann/operators/unary_operators.hpp>
-#include <format>
-#include <iostream>
 
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
+    for (std::size_t i = 0; i < r; ++i) {
         for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
@@ -26,9 +25,9 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
     }
     return res;
 }
+
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
     for (size_t i = 0; i < r; ++i) {
@@ -41,8 +40,8 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     }
     return res;
 }
-void test_sign1()
-{
+
+void test_sign1() {
     std::cout << "Test sign case 1 ...\t";
     auto rm1 = gen_matrix<float>(4, 5, -3.3f, 0.1f);
     auto t = sign(rm1);
@@ -54,8 +53,9 @@ void test_sign1()
     for (size_t i = 0; i < 4; ++i) {
         for (size_t j = 0; j < 5; ++j) {
             float aim = 0;
-            if (rm1(i, j) != 0)
+            if (rm1(i, j) != 0) {
                 aim = (rm1(i, j) > 0) ? 1 : -1;
+            }
             assert(fabs(t_r(i, j) - aim) < 0.0001);
         }
     }
@@ -68,16 +68,16 @@ void test_sign1()
     for (size_t i = 0; i < 4; ++i) {
         for (size_t j = 0; j < 5; ++j) {
             float aim = 0;
-            if (rm1(i, j) != 0)
+            if (rm1(i, j) != 0) {
                 aim = (rm1(i, j) > 0) ? 1 : -1;
+            }
             assert(fabs(t_r(i, j) - aim) < 0.0001);
         }
     }
     std::cout << "done" << std::endl;
 }
 
-void test_sign2()
-{
+void test_sign2() {
     cout << "Test sign case 2 ...\t";
     {
         auto rm1 = gen_matrix<float>(4, 5, 0, 0.0001f);
@@ -107,8 +107,8 @@ void test_sign2()
     }
     cout << "done" << endl;
 }
-void test_sign3()
-{
+
+void test_sign3() {
     cout << "Test sign case 3 ...\t";
     auto rm1 = gen_batch_matrix<float>(4, 5, 7, -3.3f, 0.1f);
     auto t = sign(rm1);
@@ -121,8 +121,9 @@ void test_sign3()
         for (size_t i = 0; i < 4; ++i) {
             for (size_t j = 0; j < 5; ++j) {
                 float aim = 0;
-                if (rm1[b](i, j) != 0)
+                if (rm1[b](i, j) != 0) {
                     aim = (rm1[b](i, j) > 0) ? 1 : -1;
+                }
                 assert(fabs(t_r[b](i, j) - aim) < 0.0001);
             }
         }
@@ -130,13 +131,10 @@ void test_sign3()
     cout << "done" << endl;
 }
 
-
-int main()
-{
+int main() {
     std::cout << std::format("Sign Tests Start") << std::endl;
     test_sign1();
     test_sign2();
     test_sign3();
     std::cout << std::format("Sign Tests End") << std::endl;
-
 }

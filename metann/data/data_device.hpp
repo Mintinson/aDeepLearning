@@ -7,14 +7,12 @@
 #include <concepts>
 
 namespace metann {
-struct DeviceTags {
-};
+struct DeviceTags {};
 
 template <typename T>
 concept DeviceConcept = std::derived_from<T, DeviceTags>;
 
-struct CPU : DeviceTags {
-};
+struct CPU : DeviceTags {};
 
 template <typename Category, typename Element, DeviceConcept Device>
 struct PrincipleDataType;
@@ -22,6 +20,6 @@ struct PrincipleDataType;
 template <typename Category, typename Element, DeviceConcept Device>
 using PrincipleDataType_t = typename PrincipleDataType<Category, Element, Device>::type;
 
-}
+}  // namespace metann
 
-#endif // DATA_DEVICE_HPP
+#endif  // DATA_DEVICE_HPP

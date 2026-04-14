@@ -1,3 +1,7 @@
+#include <iostream>
+#include <map>
+#include <string>
+
 #include <metann/data/data_device.hpp>
 #include <metann/data/matrix.hpp>
 #include <metann/layers/elementary/abs_layer.hpp>
@@ -8,22 +12,16 @@
 #include <metann/layers/grad_collector.hpp>
 #include <metann/layers/initializer.hpp>
 #include <metann/layers/interface_fun.hpp>
-#include <iostream>
-#include <map>
-#include <string>
 using namespace metann;
 using std::cout;
 using std::endl;
 
 template <typename Elem>
-inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1)
-{
+inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale = 1) {
     using namespace metann;
     Matrix<Elem, CPU> res(r, c);
-    for (std::size_t i = 0; i < r; ++i)
-    {
-        for (std::size_t j = 0; j < c; ++j)
-        {
+    for (std::size_t i = 0; i < r; ++i) {
+        for (std::size_t j = 0; j < c; ++j) {
             res.setValue(i, j, (Elem)(start * scale));
             start += 1.0f;
         }
@@ -32,16 +30,12 @@ inline auto gen_matrix(std::size_t r, std::size_t c, Elem start = 0, Elem scale 
 }
 
 template <typename TElem>
-inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1)
-{
+inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, float scale = 1) {
     using namespace metann;
     Batch<TElem, metann::CPU, CategoryTags::Matrix> res(d, r, c);
-    for (size_t i = 0; i < r; ++i)
-    {
-        for (size_t j = 0; j < c; ++j)
-        {
-            for (size_t k = 0; k < d; ++k)
-            {
+    for (size_t i = 0; i < r; ++i) {
+        for (size_t j = 0; j < c; ++j) {
+            for (size_t k = 0; k < d; ++k) {
                 res.setValue(k, i, j, static_cast<TElem>(start * scale));
                 start += 1.0f;
             }
@@ -50,8 +44,7 @@ inline auto gen_batch_matrix(size_t r, size_t c, size_t d, float start = 0, floa
     return res;
 }
 
-void test_abs_layer1()
-{
+void test_abs_layer1() {
     cout << "Test abs layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<AbsLayer>;
     static_assert(!RootLayer::isUpdate, "Test Error");
@@ -69,10 +62,8 @@ void test_abs_layer1()
     assert(res.rowNum() == 4);
     assert(res.colNum() == 5);
 
-    for (size_t i = 0; i < 4; ++i)
-    {
-        for (size_t j = 0; j < 5; ++j)
-        {
+    for (size_t i = 0; i < 4; ++i) {
+        for (size_t j = 0; j < 5; ++j) {
             auto check = fabs(in(i, j));
             assert(fabs(res(i, j) - check) < 0.0001);
         }
@@ -87,8 +78,7 @@ void test_abs_layer1()
     cout << "done" << endl;
 }
 
-void test_abs_layer2()
-{
+void test_abs_layer2() {
     cout << "Test abs layer case 2 ...\t";
     using RootLayer = InjectPolicy_t<AbsLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -105,10 +95,8 @@ void test_abs_layer2()
     assert(res.rowNum() == 4);
     assert(res.colNum() == 5);
 
-    for (size_t i = 0; i < 4; ++i)
-    {
-        for (size_t j = 0; j < 5; ++j)
-        {
+    for (size_t i = 0; i < 4; ++i) {
+        for (size_t j = 0; j < 5; ++j) {
             auto check = fabs(in(i, j));
             assert(fabs(res(i, j) - check) < 0.0001);
         }
@@ -118,10 +106,8 @@ void test_abs_layer2()
     auto out_grad = layer.feedBackward(LayerIO::create().set<LayerIO>(grad));
     auto fb = evaluate(out_grad.get<LayerIO>());
 
-    for (size_t i = 0; i < 4; ++i)
-    {
-        for (size_t j = 0; j < 5; ++j)
-        {
+    for (size_t i = 0; i < 4; ++i) {
+        for (size_t j = 0; j < 5; ++j) {
             auto check = in(i, j) / fabs(in(i, j)) * grad(i, j);
             assert(fabs(fb(i, j) - check) < 0.0001);
         }
@@ -131,8 +117,7 @@ void test_abs_layer2()
     cout << "done" << endl;
 }
 
-void test_abs_layer3()
-{
+void test_abs_layer3() {
     cout << "Test abs layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<AbsLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -143,8 +128,7 @@ void test_abs_layer3()
     std::vector<Matrix<float, CPU>> op;
 
     layer_neutral_invariant(layer);
-    for (size_t loop_count = 1; loop_count < 10; ++loop_count)
-    {
+    for (size_t loop_count = 1; loop_count < 10; ++loop_count) {
         auto in = gen_matrix<float>(loop_count, 3, -0.1f, 0.02f);
 
         op.push_back(in);
@@ -155,18 +139,15 @@ void test_abs_layer3()
         auto res = evaluate(out.get<LayerIO>());
         assert(res.rowNum() == loop_count);
         assert(res.colNum() == 3);
-        for (size_t i = 0; i < loop_count; ++i)
-        {
-            for (size_t j = 0; j < 3; ++j)
-            {
+        for (size_t i = 0; i < loop_count; ++i) {
+            for (size_t j = 0; j < 3; ++j) {
                 auto check = fabs(in(i, j));
                 assert(fabs(res(i, j) - check) < 0.0001);
             }
         }
     }
 
-    for (size_t loop_count = 9; loop_count >= 1; --loop_count)
-    {
+    for (size_t loop_count = 9; loop_count >= 1; --loop_count) {
         auto grad = gen_matrix<float>(loop_count, 3, 2, 1.1f);
         auto out_grad = layer.feedBackward(LayerIO::create().set<LayerIO>(grad));
 
@@ -174,10 +155,8 @@ void test_abs_layer3()
 
         auto in = op.back();
         op.pop_back();
-        for (size_t i = 0; i < loop_count; ++i)
-        {
-            for (size_t j = 0; j < 3; ++j)
-            {
+        for (size_t i = 0; i < loop_count; ++i) {
+            for (size_t j = 0; j < 3; ++j) {
                 auto aim = in(i, j) / fabs(in(i, j)) * grad(i, j);
                 assert(fabs(fb(i, j) - aim) < 0.00001f);
             }
@@ -189,8 +168,7 @@ void test_abs_layer3()
     cout << "done" << endl;
 }
 
-void test_abs_layer4()
-{
+void test_abs_layer4() {
     cout << "Test abs layer case 4 ...\t";
     using RootLayer = InjectPolicy_t<AbsLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -228,8 +206,7 @@ void test_abs_layer4()
     cout << "done" << endl;
 }
 
-void test_add_layer1()
-{
+void test_add_layer1() {
     cout << "Test add layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<AddLayer>;
     static_assert(!RootLayer::isFeedbackOutput, "Test Error");
@@ -244,10 +221,8 @@ void test_add_layer1()
 
     auto out = layer.feedForward(input);
     auto res = evaluate(out.get<LayerIO>());
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fabs(res(i, j) - i1(i, j) - i2(i, j)) < 0.001);
         }
     }
@@ -261,8 +236,7 @@ void test_add_layer1()
     cout << "done" << endl;
 }
 
-void test_add_layer2()
-{
+void test_add_layer2() {
     cout << "Test add layer case 2 ...\t";
 
     using RootLayer = InjectPolicy_t<AddLayer, FeedbackOutputPolicy>;
@@ -277,10 +251,8 @@ void test_add_layer2()
 
     auto out = layer.feedForward(input);
     auto res = evaluate(out.get<LayerIO>());
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fabs(res(i, j) - i1(i, j) - i2(i, j)) < 0.001);
         }
     }
@@ -300,10 +272,8 @@ void test_add_layer2()
     assert(fb1.rowNum() == 2);
     assert(fb1.colNum() == 3);
 
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fb1(i, j) == grad(i, j));
             assert(fb2(i, j) == grad(i, j));
         }
@@ -312,8 +282,7 @@ void test_add_layer2()
     cout << "done" << endl;
 }
 
-void test_add_layer3()
-{
+void test_add_layer3() {
     cout << "Test add layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<AddLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -328,10 +297,8 @@ void test_add_layer3()
 
     auto out = layer.feedForward(input);
     auto res = evaluate(out.get<LayerIO>());
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fabs(res(i, j) - i1(i, j) - i2(i, j)) < 0.001);
         }
     }
@@ -343,10 +310,8 @@ void test_add_layer3()
 
     out = layer.feedForward(input);
     res = evaluate(out.get<LayerIO>());
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fabs(res(i, j) - i3(i, j) - i4(i, j)) < 0.001);
         }
     }
@@ -366,10 +331,8 @@ void test_add_layer3()
     assert(fb1.rowNum() == 2);
     assert(fb1.colNum() == 3);
 
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fb1(i, j) == grad(i, j));
             assert(fb2(i, j) == grad(i, j));
         }
@@ -391,10 +354,8 @@ void test_add_layer3()
     assert(fb1.rowNum() == 2);
     assert(fb1.colNum() == 3);
 
-    for (size_t i = 0; i < 2; ++i)
-    {
-        for (size_t j = 0; j < 3; ++j)
-        {
+    for (size_t i = 0; i < 2; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
             assert(fb1(i, j) == grad(i, j));
             assert(fb2(i, j) == grad(i, j));
         }
@@ -402,8 +363,7 @@ void test_add_layer3()
     cout << "done" << endl;
 }
 
-void test_element_mul_layer1()
-{
+void test_element_mul_layer1() {
     cout << "Test element mul layer case 1 ...\t";
     using RootLayer = InjectPolicy_t<MulLayer>;
     static_assert(!RootLayer::isFeedbackOutput, "Test Error");
@@ -450,8 +410,7 @@ void test_element_mul_layer1()
     cout << "done" << endl;
 }
 
-void test_element_mul_layer2()
-{
+void test_element_mul_layer2() {
     cout << "Test element mul layer case 2 ...\t";
     using RootLayer = InjectPolicy_t<MulLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -524,8 +483,7 @@ void test_element_mul_layer2()
     cout << "done" << endl;
 }
 
-void test_element_mul_layer3()
-{
+void test_element_mul_layer3() {
     cout << "Test element mul layer case 3 ...\t";
     using RootLayer = InjectPolicy_t<MulLayer, FeedbackOutputPolicy>;
     static_assert(RootLayer::isFeedbackOutput, "Test Error");
@@ -536,8 +494,7 @@ void test_element_mul_layer3()
     std::vector<Matrix<float, CPU>> op1;
     std::vector<Matrix<float, CPU>> op2;
     layer_neutral_invariant(layer);
-    for (size_t loop_count = 1; loop_count < 10; ++loop_count)
-    {
+    for (size_t loop_count = 1; loop_count < 10; ++loop_count) {
         auto i1 = gen_matrix<float>(loop_count, 3, 0, 0.3f);
         auto i2 = gen_matrix<float>(loop_count, 3, -1, 1.3f);
         op1.push_back(i1);
@@ -549,17 +506,14 @@ void test_element_mul_layer3()
         auto res = evaluate(out.get<LayerIO>());
         assert(res.rowNum() == loop_count);
         assert(res.colNum() == 3);
-        for (size_t i = 0; i < loop_count; ++i)
-        {
-            for (size_t j = 0; j < 3; ++j)
-            {
+        for (size_t i = 0; i < loop_count; ++i) {
+            for (size_t j = 0; j < 3; ++j) {
                 assert(fabs(res(i, j) - i1(i, j) * i2(i, j)) < 0.0001);
             }
         }
     }
 
-    for (size_t loop_count = 9; loop_count >= 1; --loop_count)
-    {
+    for (size_t loop_count = 9; loop_count >= 1; --loop_count) {
         auto grad = gen_matrix<float>(loop_count, 3, 2, 1.1f);
         auto out_grad = layer.feedBackward(LayerIO::create().set<LayerIO>(grad));
 
@@ -574,10 +528,8 @@ void test_element_mul_layer3()
         op1.pop_back();
         auto i2 = op2.back();
         op2.pop_back();
-        for (size_t i = 0; i < loop_count; ++i)
-        {
-            for (size_t j = 0; j < 3; ++j)
-            {
+        for (size_t i = 0; i < loop_count; ++i) {
+            for (size_t j = 0; j < 3; ++j) {
                 assert(fabs(g1(i, j) - grad(i, j) * i2(i, j)) < 0.001);
                 assert(fabs(g2(i, j) - grad(i, j) * i1(i, j)) < 0.001);
             }
@@ -589,8 +541,7 @@ void test_element_mul_layer3()
     cout << "done" << endl;
 }
 
-int main()
-{
+int main() {
     test_abs_layer2();
     test_abs_layer3();
     test_abs_layer4();
