@@ -1,84 +1,70 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(deep_learning)
+project(deep_learning VERSION 0.1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-    # because the default gcc compiler in my computer doesn't support format,
-    # so i have to use libc++ instead of gcc's stdlibc++
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fexperimental-library") # Latter for the std::execution
+include(GNUInstallDirs)
+include(CTest)
+
+option(METANN_BUILD_EXAMPLES "Build metann examples" ON)
+option(METANN_CLANG_USE_LIBCXX "Use libc++ and experimental library with Clang" ON)
+option(METANN_BUILD_EXPERIMENTAL_TESTS "Build experimental/in-progress tests" ON)
+
+add_library(metann INTERFACE)
+add_library(metann::metann ALIAS metann)
+
+target_compile_features(metann INTERFACE cxx_std_20)
+target_compile_options(metann
+    INTERFACE
+    "$<$<CXX_COMPILER_ID:MSVC>:/utf-8>"
+)
+
+if(METANN_CLANG_USE_LIBCXX)
+    target_compile_options(metann
+        INTERFACE
+        "$<$<CXX_COMPILER_ID:Clang>:-stdlib=libc++>"
+        "$<$<CXX_COMPILER_ID:Clang>:-fexperimental-library>"
+    )
+    target_link_options(metann
+        INTERFACE
+        "$<$<CXX_COMPILER_ID:Clang>:-stdlib=libc++>"
+    )
 endif()
 
-add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-
-# Create interface library since it's header-only
-add_library(metann INTERFACE)
-
-# Get all .hpp files from specified directories
-file(GLOB_RECURSE META_HEADERS
+file(GLOB_RECURSE METANN_HEADERS CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/metann/*.hpp"
-    # "${CMAKE_CURRENT_SOURCE_DIR}/layers/*.hpp"
-    # "${CMAKE_CURRENT_SOURCE_DIR}/operators/*.hpp"
-    # "${CMAKE_CURRENT_SOURCE_DIR}/policy/*.hpp"
-    # "${CMAKE_CURRENT_SOURCE_DIR}/utils/*.hpp"
-    # "${CMAKE_CURRENT_SOURCE_DIR}/eval/*.hpp"
 )
 
-# Create the include directory structure
-set(METANN_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/include/metann")
-file(MAKE_DIRECTORY ${METANN_INCLUDE_DIR})
+# Add headers for IDE discovery and source browsing.
+target_sources(metann INTERFACE "$<BUILD_INTERFACE:${METANN_HEADERS}>")
 
-# Copy headers to include/metann directory maintaining directory structure
-foreach(HEADER ${META_HEADERS})
-    file(RELATIVE_PATH REL_PATH ${CMAKE_CURRENT_SOURCE_DIR} ${HEADER})
-    get_filename_component(DIR_PATH ${REL_PATH} DIRECTORY)
-    file(COPY ${HEADER} DESTINATION "${METANN_INCLUDE_DIR}/${DIR_PATH}")
-endforeach()
-
-# Set include directories for the library
 target_include_directories(metann
     INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
-    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-# Add header files to the library for IDE support
-target_sources(metann
-    INTERFACE
-    FILE_SET HEADERS
-    BASE_DIRS "${CMAKE_CURRENT_BINARY_DIR}/include"
-    FILES ${INSTALLED_HEADERS}
-)
+install(TARGETS metann EXPORT metannTargets)
 
-# Set up installation rules
-include(GNUInstallDirs)
-
-# Install header files maintaining directory structure
-install(DIRECTORY "${METANN_INCLUDE_DIR}"
-    DESTINATION include
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/metann"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
     FILES_MATCHING PATTERN "*.hpp"
 )
 
-# Install the target
-install(TARGETS metann
-    EXPORT metannTargets
-    FILE_SET HEADERS
-)
-
-# Export the targets
 install(EXPORT metannTargets
     FILE metannTargets.cmake
     NAMESPACE metann::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/metann
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/metann"
 )
 
-include(CTest)
-add_subdirectory(Tests)
-add_subdirectory(examples)
+if(BUILD_TESTING)
+    add_subdirectory(Tests)
+endif()
+
+if(METANN_BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
 
 # include_directories(utils)
 # include_directories(policy)

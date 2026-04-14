@@ -12,7 +12,7 @@ namespace metann
     {
     };
 
-    struct CostLayerIO : public VarTypeDict<CostLayerIO, struct CostLayerLabel1>
+    struct CostLayerIO : public VarTypeDict<CostLayerIO, struct CostLayerLabel>
     {
     };
 }
