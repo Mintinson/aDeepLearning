@@ -29,10 +29,11 @@ struct MatrixGradInfo {
 
 template <typename Element, DeviceConcept Device>
 class GradCollectorIterator {
-    using IteratorType = typename std::unordered_map<const Element*, MatrixGradInfo<Element, Device>>::iterator;
+    using IteratorType = typename std::unordered_map<const Element*, MatrixGradInfo<Element, Device>>::const_iterator;
 
 public:
-    GradCollectorIterator(IteratorType it) : m_it(std::move(it)) {}
+    template <typename It>
+    explicit GradCollectorIterator(It it) : m_it(it) {}
 
     const auto& operator*() const { return m_it->second; }
 
@@ -98,13 +99,13 @@ public:
 
     [[nodiscard]] std::size_t size() const { return m_matricesInfo.size(); }
 
-    [[nodiscard]] auto begin() { return GradCollectorIterator<Element, Device>{m_matricesInfo.begin()}; }
+    [[nodiscard]] auto begin() { return GradCollectorIterator<Element, Device>(m_matricesInfo.cbegin()); }
 
-    [[nodiscard]] auto begin() const { return GradCollectorIterator<Element, Device>{m_matricesInfo.begin()}; }
+    [[nodiscard]] auto begin() const { return GradCollectorIterator<Element, Device>(m_matricesInfo.cbegin()); }
 
-    auto end() { return GradCollectorIterator<Element, Device>{m_matricesInfo.end()}; }
+    auto end() { return GradCollectorIterator<Element, Device>(m_matricesInfo.cend()); }
 
-    auto end() const { return GradCollectorIterator<Element, Device>{m_matricesInfo.end()}; }
+    auto end() const { return GradCollectorIterator<Element, Device>(m_matricesInfo.cend()); }
 
 private:
     std::unordered_map<const Element*, MatrixGradInfo<Element, Device>> m_matricesInfo;

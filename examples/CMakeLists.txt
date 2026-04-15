@@ -9,6 +9,7 @@ set(METANN_EXAMPLE_CASES
     "nn_two_layer_inference|nn_two_layer_inference.cpp"
     "nn_single_layer_backward|nn_single_layer_backward.cpp"
     "nn_xor_training|nn_xor_training.cpp"
+    "nn_mnist_training|nn_mnist_training.cpp"
 )
 
 foreach(example_case IN LISTS METANN_EXAMPLE_CASES)

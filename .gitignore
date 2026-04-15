@@ -367,3 +367,6 @@ FodyWeavers.xsd
 
 # VS code configuration files
 .vscode/
+
+# data
+datasets/

@@ -359,7 +359,7 @@ public:
     static auto createSubLayers() { return details::SubLayerArrayMaker<InstContainer>(); }
 
     template <typename Save>
-    void saveWeights(Save& saver) {
+    void saveWeights(Save& saver) const  {
         details::save_weights<0>(saver, m_subLayers);
     }
 

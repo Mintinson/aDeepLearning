@@ -5,6 +5,9 @@
 #ifndef TERNARY_OPERATORS_HPP
 #define TERNARY_OPERATORS_HPP
 #include "../data/data_category.hpp"
+#include "../data/duplicate.hpp"
+#include "../data/matrix.hpp"
+#include "../eval/facilities.hpp"
 #include "../utils/type_traits.hpp"
 #include "operator_category.hpp"
 #include "operator_helper.hpp"
