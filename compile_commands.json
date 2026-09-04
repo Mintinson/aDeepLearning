@@ -1,170 +1,212 @@
 [
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/utils_test.dir/utils_test/test_utils.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/utils_test/test_utils.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/utils_test/test_utils.cpp",
-  "output": "Tests/CMakeFiles/utils_test.dir/utils_test/test_utils.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/utils_test.dir/utils_test/test_utils.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/utils_test/test_utils.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/utils_test/test_utils.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/utils_test.dir/utils_test/test_utils.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/array_test.dir/datatype_test/test_arr.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_arr.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_arr.cpp",
-  "output": "Tests/CMakeFiles/array_test.dir/datatype_test/test_arr.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/array_test.dir/datatype_test/test_arr.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_arr.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_arr.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/array_test.dir/datatype_test/test_arr.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/matrix_test.dir/datatype_test/test_matrix.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_matrix.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_matrix.cpp",
-  "output": "Tests/CMakeFiles/matrix_test.dir/datatype_test/test_matrix.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/matrix_test.dir/datatype_test/test_matrix.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_matrix.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_matrix.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/matrix_test.dir/datatype_test/test_matrix.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/dup_batch_test.dir/datatype_test/test_batch_duplicate.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_batch_duplicate.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_batch_duplicate.cpp",
-  "output": "Tests/CMakeFiles/dup_batch_test.dir/datatype_test/test_batch_duplicate.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/dup_batch_test.dir/datatype_test/test_batch_duplicate.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_batch_duplicate.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_batch_duplicate.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/dup_batch_test.dir/datatype_test/test_batch_duplicate.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/other_data_test.dir/datatype_test/test_others.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_others.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/datatype_test/test_others.cpp",
-  "output": "Tests/CMakeFiles/other_data_test.dir/datatype_test/test_others.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/other_data_test.dir/datatype_test/test_others.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_others.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/datatype_test/test_others.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/other_data_test.dir/datatype_test/test_others.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/abs_test.dir/unary_operators_test/test_abs.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_abs.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_abs.cpp",
-  "output": "Tests/CMakeFiles/abs_test.dir/unary_operators_test/test_abs.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/abs_test.dir/unary_operators_test/test_abs.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_abs.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_abs.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/abs_test.dir/unary_operators_test/test_abs.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/transpose_test.dir/unary_operators_test/test_transpose.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_transpose.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_transpose.cpp",
-  "output": "Tests/CMakeFiles/transpose_test.dir/unary_operators_test/test_transpose.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/transpose_test.dir/unary_operators_test/test_transpose.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_transpose.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_transpose.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/transpose_test.dir/unary_operators_test/test_transpose.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/tanh_test.dir/unary_operators_test/test_tanh.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_tanh.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_tanh.cpp",
-  "output": "Tests/CMakeFiles/tanh_test.dir/unary_operators_test/test_tanh.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/tanh_test.dir/unary_operators_test/test_tanh.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_tanh.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_tanh.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/tanh_test.dir/unary_operators_test/test_tanh.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/sign_test.dir/unary_operators_test/test_sign.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_sign.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_sign.cpp",
-  "output": "Tests/CMakeFiles/sign_test.dir/unary_operators_test/test_sign.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/sign_test.dir/unary_operators_test/test_sign.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_sign.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_sign.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/sign_test.dir/unary_operators_test/test_sign.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/softmax_test.dir/unary_operators_test/test_softmax.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_softmax.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_softmax.cpp",
-  "output": "Tests/CMakeFiles/softmax_test.dir/unary_operators_test/test_softmax.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/softmax_test.dir/unary_operators_test/test_softmax.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_softmax.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_softmax.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/softmax_test.dir/unary_operators_test/test_softmax.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/sigmoid_test.dir/unary_operators_test/test_sigmoid.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_sigmoid.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_sigmoid.cpp",
-  "output": "Tests/CMakeFiles/sigmoid_test.dir/unary_operators_test/test_sigmoid.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/sigmoid_test.dir/unary_operators_test/test_sigmoid.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_sigmoid.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_sigmoid.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/sigmoid_test.dir/unary_operators_test/test_sigmoid.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/collapse_test.dir/unary_operators_test/test_collapse.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_collapse.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/unary_operators_test/test_collapse.cpp",
-  "output": "Tests/CMakeFiles/collapse_test.dir/unary_operators_test/test_collapse.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/collapse_test.dir/unary_operators_test/test_collapse.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_collapse.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/unary_operators_test/test_collapse.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/collapse_test.dir/unary_operators_test/test_collapse.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/dot_test.dir/binary_operators_test/test_dot.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_dot.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_dot.cpp",
-  "output": "Tests/CMakeFiles/dot_test.dir/binary_operators_test/test_dot.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/dot_test.dir/binary_operators_test/test_dot.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_dot.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_dot.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/dot_test.dir/binary_operators_test/test_dot.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/add_test.dir/binary_operators_test/test_add.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_add.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_add.cpp",
-  "output": "Tests/CMakeFiles/add_test.dir/binary_operators_test/test_add.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/add_test.dir/binary_operators_test/test_add.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_add.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_add.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/add_test.dir/binary_operators_test/test_add.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/divide_test.dir/binary_operators_test/test_divide.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_divide.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_divide.cpp",
-  "output": "Tests/CMakeFiles/divide_test.dir/binary_operators_test/test_divide.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/divide_test.dir/binary_operators_test/test_divide.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_divide.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_divide.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/divide_test.dir/binary_operators_test/test_divide.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/mul_test.dir/binary_operators_test/test_mul.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_mul.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_mul.cpp",
-  "output": "Tests/CMakeFiles/mul_test.dir/binary_operators_test/test_mul.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/mul_test.dir/binary_operators_test/test_mul.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_mul.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_mul.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/mul_test.dir/binary_operators_test/test_mul.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/sigmoid_derivative.dir/binary_operators_test/test_sigmoid_derivative.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_sigmoid_derivative.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_sigmoid_derivative.cpp",
-  "output": "Tests/CMakeFiles/sigmoid_derivative.dir/binary_operators_test/test_sigmoid_derivative.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/sigmoid_derivative.dir/binary_operators_test/test_sigmoid_derivative.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_sigmoid_derivative.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_sigmoid_derivative.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/sigmoid_derivative.dir/binary_operators_test/test_sigmoid_derivative.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/softmax_derivative.dir/binary_operators_test/test_softmax_derivative.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_softmax_derivative.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_softmax_derivative.cpp",
-  "output": "Tests/CMakeFiles/softmax_derivative.dir/binary_operators_test/test_softmax_derivative.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/softmax_derivative.dir/binary_operators_test/test_softmax_derivative.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_softmax_derivative.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_softmax_derivative.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/softmax_derivative.dir/binary_operators_test/test_softmax_derivative.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/subtration_test.dir/binary_operators_test/test_subtraction.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_subtraction.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_subtraction.cpp",
-  "output": "Tests/CMakeFiles/subtration_test.dir/binary_operators_test/test_subtraction.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/subtration_test.dir/binary_operators_test/test_subtraction.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_subtraction.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_subtraction.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/subtration_test.dir/binary_operators_test/test_subtraction.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/tanh_derivative_test.dir/binary_operators_test/test_tanh_derivative.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_tanh_derivative.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/binary_operators_test/test_tanh_derivative.cpp",
-  "output": "Tests/CMakeFiles/tanh_derivative_test.dir/binary_operators_test/test_tanh_derivative.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/tanh_derivative_test.dir/binary_operators_test/test_tanh_derivative.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_tanh_derivative.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/binary_operators_test/test_tanh_derivative.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/tanh_derivative_test.dir/binary_operators_test/test_tanh_derivative.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/activate_layer_test.dir/elementary_layer/test_activate.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_activate.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_activate.cpp",
-  "output": "Tests/CMakeFiles/activate_layer_test.dir/elementary_layer/test_activate.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/activate_layer_test.dir/elementary_layer/test_activate.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_activate.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_activate.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/activate_layer_test.dir/elementary_layer/test_activate.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/weight_layer_test.dir/elementary_layer/test_weight_layer.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_weight_layer.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_weight_layer.cpp",
-  "output": "Tests/CMakeFiles/weight_layer_test.dir/elementary_layer/test_weight_layer.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/weight_layer_test.dir/elementary_layer/test_weight_layer.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_weight_layer.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_weight_layer.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/weight_layer_test.dir/elementary_layer/test_weight_layer.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/filler_test.dir/elementary_layer/test_filler.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_filler.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_filler.cpp",
-  "output": "Tests/CMakeFiles/filler_test.dir/elementary_layer/test_filler.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/filler_test.dir/elementary_layer/test_filler.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_filler.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_filler.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/filler_test.dir/elementary_layer/test_filler.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/operator_layer_test.dir/elementary_layer/test_oper_layer.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_oper_layer.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_oper_layer.cpp",
-  "output": "Tests/CMakeFiles/operator_layer_test.dir/elementary_layer/test_oper_layer.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/operator_layer_test.dir/elementary_layer/test_oper_layer.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_oper_layer.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_oper_layer.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/operator_layer_test.dir/elementary_layer/test_oper_layer.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/bias_layer_test.dir/elementary_layer/test_bias.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_bias.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/elementary_layer/test_bias.cpp",
-  "output": "Tests/CMakeFiles/bias_layer_test.dir/elementary_layer/test_bias.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/bias_layer_test.dir/elementary_layer/test_bias.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_bias.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/elementary_layer/test_bias.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/bias_layer_test.dir/elementary_layer/test_bias.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/compose_kernel_test.dir/composed_layer/test_compose_kernel.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_compose_kernel.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_compose_kernel.cpp",
-  "output": "Tests/CMakeFiles/compose_kernel_test.dir/composed_layer/test_compose_kernel.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/compose_kernel_test.dir/composed_layer/test_compose_kernel.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_compose_kernel.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_compose_kernel.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/compose_kernel_test.dir/composed_layer/test_compose_kernel.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/linear_layer_test.dir/composed_layer/test_linear_layer.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_linear_layer.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_linear_layer.cpp",
-  "output": "Tests/CMakeFiles/linear_layer_test.dir/composed_layer/test_linear_layer.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/linear_layer_test.dir/composed_layer/test_linear_layer.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_linear_layer.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_linear_layer.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/linear_layer_test.dir/composed_layer/test_linear_layer.cpp.o"
 },
 {
-  "directory": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug",
-  "command": "/usr/bin/clang++ -I/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/out/build/clang-debug/include  -stdlib=libc++ -fexperimental-library -g -std=c++20 -o Tests/CMakeFiles/single_layer_test.dir/composed_layer/test_single_layer.cpp.o -c /media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_single_layer.cpp",
-  "file": "/media/mintinson/新加卷/learningSomething/casualCode/casualCpp/cppMeta/aDeepLearning/Tests/composed_layer/test_single_layer.cpp",
-  "output": "Tests/CMakeFiles/single_layer_test.dir/composed_layer/test_single_layer.cpp.o"
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/single_layer_test.dir/composed_layer/test_single_layer.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_single_layer.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/composed_layer/test_single_layer.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/single_layer_test.dir/composed_layer/test_single_layer.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o Tests/CMakeFiles/cost_layer_test.dir/cost_layer_test/test_negative_log_likelihood_layer.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/cost_layer_test/test_negative_log_likelihood_layer.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/Tests/cost_layer_test/test_negative_log_likelihood_layer.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/Tests/CMakeFiles/cost_layer_test.dir/cost_layer_test/test_negative_log_likelihood_layer.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/ml_linear_regression.dir/ml_linear_regression.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/ml_linear_regression.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/ml_linear_regression.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/ml_linear_regression.dir/ml_linear_regression.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/ml_logistic_regression.dir/ml_logistic_regression.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/ml_logistic_regression.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/ml_logistic_regression.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/ml_logistic_regression.dir/ml_logistic_regression.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/nn_two_layer_inference.dir/nn_two_layer_inference.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_two_layer_inference.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_two_layer_inference.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/nn_two_layer_inference.dir/nn_two_layer_inference.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/nn_single_layer_backward.dir/nn_single_layer_backward.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_single_layer_backward.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_single_layer_backward.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/nn_single_layer_backward.dir/nn_single_layer_backward.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/nn_xor_training.dir/nn_xor_training.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_xor_training.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_xor_training.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/nn_xor_training.dir/nn_xor_training.cpp.o"
+},
+{
+  "directory": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build",
+  "command": "/usr/bin/c++ -I/home/mintinson/casualCode/linuxCpp/aDeepLearning -o examples/CMakeFiles/nn_mnist_training.dir/nn_mnist_training.cpp.o -c /home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_mnist_training.cpp",
+  "file": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/examples/nn_mnist_training.cpp",
+  "output": "/home/mintinson/casualCode/linuxCpp/aDeepLearning/build/examples/CMakeFiles/nn_mnist_training.dir/nn_mnist_training.cpp.o"
 }
 ]

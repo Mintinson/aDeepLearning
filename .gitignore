@@ -370,3 +370,7 @@ FodyWeavers.xsd
 
 # data
 datasets/
+
+build/
+
+compile_commands.json
