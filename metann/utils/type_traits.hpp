@@ -424,7 +424,7 @@ constexpr std::size_t Key2ID_v = Key2ID<T, Types...>::value;
 template <typename T, typename Cont>
 struct Key2IDFromContainer;
 
-template <typename T, template <typename> class Container, typename... Args>
+template <typename T, template <typename...> class Container, typename... Args>
 struct Key2IDFromContainer<T, Container<Args...>> : Key2ID<T, Args...> {};
 
 /**
